@@ -1,0 +1,5 @@
+import math as m
+def temperature_Haus(hours):
+    return round((4*m.sin(m.pi*1/12*(hours-8))+9.5*m.sin(m.pi*1/4320*(hours-2160))+(10.5)),2)
+for hours in range(0,24*30*6):
+    print(temperature_Haus(hours))
