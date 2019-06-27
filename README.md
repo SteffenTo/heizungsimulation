@@ -1,1 +1,1 @@
-# heinzungsimulation
+# heizungsimulation
