@@ -1,0 +1,48 @@
+from tkinter import *
+
+def GUI():
+    root = Tk()
+    rahmen_oben = Frame(root)
+    rahmen_oben.pack(side=TOP)
+    rahmen_mitte_links = Frame(root)
+    rahmen_mitte_links.pack(side=LEFT)
+    rahmen_mitte_rechts = Frame(root)
+    rahmen_mitte_rechts.pack(side=LEFT)
+    rahmen_unten = Frame(root)
+    rahmen_unten.pack(side=BOTTOM)
+
+    text_daemmung = Label(rahmen_mitte_links, text = "Wähle aus welche Teile des Hauses du dämmen willst:")       #Checkboxen für die Art der Dämmung festlegen
+    var_waende = IntVar()
+    checkbox_waende = Checkbutton(rahmen_mitte_links, text = "Seitenwände", variable = var_waende)
+    var_keller = IntVar()
+    checkbox_keller = Checkbutton(rahmen_mitte_links, text = "Kellerdecken", variable = var_keller)
+    var_dach = IntVar()
+    checkbox_dach = Checkbutton(rahmen_mitte_links, text = "Dach", variable = var_dach)
+
+##    text_dicke = Label(rahmen_mitte_links, text "Mit welchem Styropor willst du dein Haus dämmen?")
+##    sechs = RadioButton(root, text = "6 cm")
+##    zehn = RadioButton(root, text = "10 cm")
+
+
+
+    knopf_berechnung = Button(rahmen_unten, text = "Energieeinsparung berechen!", fg="green")
+    knopf_fenster = Button(rahmen_mitte_rechts, text = "Tausche die Fenster gegen Dreifachglas!")
+
+
+    knopf_berechnung.pack()
+    text_daemmung.pack(side=TOP)
+    checkbox_waende.pack()
+    checkbox_keller.pack()
+    checkbox_dach.pack()
+    knopf_fenster.pack(side=LEFT)
+    
+    
+    root.mainloop
+
+GUI()
+    
+
+
+                
+                        
+    
