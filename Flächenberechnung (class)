@@ -1,0 +1,29 @@
+class Flaeche:
+    print("Relevante Flächenmaße des Hauses:")
+    def __init__(self,l,b,name):
+        self.laenge = l
+        self.breite = b  
+        self.name = name
+
+    def get_flaeche (self):
+        flaeche = self.laenge * self.breite
+        bezeichner = self.name
+        print (bezeichner + ": " + str(round(flaeche,3)))
+
+tuer = Flaeche(2.11,0.85, "Tür")
+tuer.get_flaeche()
+
+fenster = Flaeche(1.4,1.14, "Fenster")
+fenster.get_flaeche()
+
+dachfenster = Flaeche(0.66,0.98, "Dachfenster")
+dachfenster.get_flaeche()
+
+l_wand = Flaeche (10,3.5, "Lange Wand")
+l_wand.get_flaeche()
+
+k_wand = Flaeche (3.5+0.5*4.5,8, "Kurze Wand")
+k_wand.get_flaeche()
+
+dach = Flaeche (math.sqrt(4.5**2+(0.5*8)**2),10, "Dach")
+dach.get_flaeche()
