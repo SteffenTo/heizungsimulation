@@ -1,0 +1,43 @@
+b_haus = 8  
+t_haus = 10
+h_erdgeschoss = 3.5
+h_dach = 4.5
+
+h_fenster = 1.4
+b_fenster = 1.14
+
+h_tuer = 2.1
+b_tuer = 0.85
+
+b_dachfenster = 0.66
+h_dachfenster = 0.98
+
+print()
+print()
+print("Relevante Flächenmaße des Hauses:")
+print()
+      
+flaeche_tuer = h_tuer * b_tuer
+print("Jede Tür nimmt eine Fläche von " + str(round (flaeche_tuer, 3)) + " m^2 ein")
+print ()
+
+flaeche_fenster = h_fenster * b_fenster
+print ("Jedes Fenster nimmt eine Fläche von " + str(round (flaeche_fenster, 3)) + " m^2 ein")
+print ()
+
+flaeche_wand_kurz = b_haus * (h_erdgeschoss + 0.5 * h_dach) - flaeche_fenster - flaeche_tuer
+print("Jede kurze Wand nimmt abzüglich der Fläche eines Fensters und einer Tür eine Fläche von " + str(round (flaeche_wand_kurz, 3)) + " m^2 ein")
+print ()
+
+flaeche_wand_lang = t_haus * h_erdgeschoss - 2 * flaeche_fenster
+print("Jede lange Wand nimmt abzüglich der Fläche zweier Fenster eine Fläche von " + str(round (flaeche_wand_lang, 3)) + " m^2 ein")
+print ()
+
+flaeche_dachfenster = b_dachfenster * h_dachfenster
+print("Jedes Dachfenster eine Fläche von " + str(round(flaeche_dachfenster, 3)) + "m^2 ein")
+print ()
+
+flaeche_dach = math.sqrt(h_dach * h_dach + 0.25 * b_haus * b_haus) * t_haus - flaeche_dachfenster
+print ("Jede Dachschräge nimmt abzüglich der Fläche eines Dachfensters  eine Fläche von " + str(round (flaeche_dach, 3)) + " m^2 ein")
+print ()
+
