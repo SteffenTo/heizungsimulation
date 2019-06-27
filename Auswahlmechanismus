@@ -1,0 +1,28 @@
+class Auswahl:
+    print ("Ein Haus mit bekannten Abmaßen soll gedämmt werden.")
+    print("Für die Bewertung der Maßnahmen steht Ihnen eine Software zu Verfügung mit der Sie entweder")
+    print ("die Wände, das Dach oder die Kellerdecke mit 6cm, 10cm oder 15cm dicken Styropor oder") 
+
+    def __init__(self,gebäudekomponente):
+         self.eingabe1 = gebäudekomponente
+         
+    get_eingabe1(self):
+        eingbe1 = input(Wände, Dach, Kellerboden)
+        print(eingabe1)
+
+
+print ("Welche Gebäudekomponente soll gedämmt werden?\n 1 - Wände\n 2 - Dach\n 3 - Kellerboden\n 4 - Fenster und Türen\n 5 - alles")
+    
+komponente = input("Komponente: ")
+if komponente == "1" or komponente == "2" or komponente == "3":
+    print ("Dämmung durch Styroporschicht der Dicke \n a - 6cm\n b - 10cm\n c - 15cm")
+    maßnahme = input("Variante: ")
+    
+elif komponente == "4" :
+    print("Dämmung der Fensterund Türen durch\n a - Zweifach-Verbundglas\n b - Dreifach-Verbundglas")
+    maßnahme = input("Variante: ")
+elif komponente == "5":
+    print ("Es wird eine Dämmung sämtlicher Komponenten durch 15cm dickes Styropor und Dreifachverbundglas vorgenommen")
+
+else:
+    print ("Eingabe der Komponente ist ungültig. Bitte neue Komponente auswählen.")
