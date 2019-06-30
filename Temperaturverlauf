@@ -2,9 +2,9 @@ print ("Für welchen Zeitraum soll die Temperatur ausgegeben werden? \n 1 - 1 Ja
 Auswahl = input ("Auswahl: ")
 
 if Auswahl == "1":
-    months_start = 0; months_end = 12; days = 0
+    months_start = 1; months_end = 12; days = 0 
 if Auswahl == "2":
-    months_start = 0; months_end = 0; days = 1
+    months_start = 1; months_end = 1; days = 1
 if Auswahl == "3":
     months_start = 4; months_end = 4; days = 1
 if Auswahl == "4":
@@ -17,11 +17,12 @@ temp_max = 20
 temp_diff = 8 
 tmin = 2 #Uhr
 
+
 import math as m
 def temperature_Haus(hours):
     return round((1/2*temp_diff*m.sin(m.pi*1/12*(hours-6-tmin))+((temp_max-temp_min)/2)*m.sin(m.pi*1/4320*(hours-2160))+(((temp_max-temp_min)/2)+temp_min)),2)
 
-for hours in range(24*30*months_start+1, 24*30*months_end+1+(24*days), 1): #24 Stunden * 30 Tage 
+for hours in range(24*30*(months_start-1), 24*30*(months_end-1)+(24*days), 1): #24 Stunden * 30 Tage 
     print(temperature_Haus(hours))
 
         
