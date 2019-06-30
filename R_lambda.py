@@ -1,3 +1,4 @@
+#Berechnung des Wärmewiderstandes mithilfe von Klasse funktioniert noch nicht
 class Wärmewiderstand:
     dach = 60.208                                                       #test variablen für Variablen die von der Flächenfkt. ausgegeben werden
     dachfenster = 0.647
