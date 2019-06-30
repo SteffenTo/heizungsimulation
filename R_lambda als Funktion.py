@@ -1,3 +1,4 @@
+#Die Berechnung nur als Funktion funktioniert, will es allerdings noch händich nachrechnen ob wirklich alle Formeln i.O. sind
 def main(lambda_glas, s_fenster, status_styropor_wand, status_styropor_boden, status_styropor_dach, s_styropor):              #s_fenster evtl == s_wand
         dach = 60.208                                                       #test variablen für Variablen die von der Flächenfkt. ausgegeben werden
         dachfenster = 0.647
