@@ -30,7 +30,7 @@ class Wärmewiderstand:
     
     def r_lambda_pzs(self, status_styropor, s_styropor, flaeche):                 #Berechung des Wärmewiderstandes von der oft benötigten Kombination Putz + Ziegel + Putz + evtl. Styropor
         r_lambda_pzs = r_lambda(s_putz, lambda_putz,flaeche) + r_lambda(s_mauer, lambda_hochlochziegeln, flaeche)
-        if status_styropor == 0:
+        if status_styropor == False:
             pass
         else:
             r_lambda_pzs += r_lambda(s_styropor, lambda_styropor, flaeche)
@@ -47,8 +47,8 @@ class Wärmewiderstand:
     print("Der Wärmewiderstand des Hauses beträgt", r_lambda_gesamt(lambda_glas, s_fenster, s_styropor), "K/W.")
 
 
-r_lambda_haus = Wärmewiderstand(1.2, 0.15, 1, 1, 1, 0.15)
+r_lambda_haus = Wärmewiderstand(1.2, 0.15, True, True, True, 0.15)
 r_lambda_haus.r_lambda_gesamt()
-    
+
         
            
