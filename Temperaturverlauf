@@ -1,8 +1,22 @@
+temp_min = float(input("Geben Sie die Mindesttemperatur für den 1. Januar ein: " )) 
+print (temp_min, "°C")
+temp_max = float(input("Geben Sie die Maximaltemperatur für den 1. Juli ein: " ))
+print (temp_max, "°C")
+temp_diff = float(input("Wählen Sie den Wert für den Temperaturunterschied am Tag zwischen Tagestiefst-/Tageshöchsttemperatur und der durchschnittlichen Temperatur pro Tag ein: " ))
+print (temp_diff, "°C")
+tmin = float(input("Geben Sie den Zeitpunkt der Tagestiefsttemperatur an: " ))
+print (tmin, "Uhr")
+
+#temp_min = 1
+#temp_max = 20
+#temp_diff = 4
+#tmin = 2 #Uhr
+
 print ("Für welchen Zeitraum soll die Temperatur ausgegeben werden? \n 1 - 1 Jahr\n 2 - 1. Januar\n 3 - 1. April\n 4 - 1. Juli\n 5 - 1. Oktober")
 Auswahl = input ("Auswahl: ")
 
 if Auswahl == "1":
-    months_start = 1; months_end = 12; days = 0 
+    months_start = 1; months_end = 12; days = 0                 #Monate: 1 = Januar; Tage: 1 = 1. des Monats mit drin
 if Auswahl == "2":
     months_start = 1; months_end = 1; days = 1
 if Auswahl == "3":
@@ -12,18 +26,13 @@ if Auswahl == "4":
 if Auswahl == "5":
     months_start = 10; months_end = 10; days = 1
 
-temp_min = 1
-temp_max = 20
-temp_diff = 8 
-tmin = 2 #Uhr
-
-
 import math as m
 def temperature_Haus(hours):
     return round((1/2*temp_diff*m.sin(m.pi*1/12*(hours-6-tmin))+((temp_max-temp_min)/2)*m.sin(m.pi*1/4320*(hours-2160))+(((temp_max-temp_min)/2)+temp_min)),2)
-
 for hours in range(24*30*(months_start-1), 24*30*(months_end-1)+(24*days), 1): #24 Stunden * 30 Tage 
     print(temperature_Haus(hours))
+    
+input("hit any key to close")
 
         
 # range([start], stop[, 1]) letzte nummer nicht mit drin
