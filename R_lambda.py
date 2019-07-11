@@ -18,7 +18,8 @@ class Waermewiderstand:
 
         self.s_putz = 0.025                                         # Deklaration der Attribute die für Instanzen der class gelten
         self.s_mauer = 0.115
-        self.s_tuer = self.s_putz + self.s_mauer
+        self.s_tuer = 0.06
+        self.lambda_glas_tuer = 5.6
         self.lambda_putz = 0.85
         self.lambda_hochlochziegeln = 0.95
         self.lambda_styropor = 0.035
