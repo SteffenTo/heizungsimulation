@@ -31,10 +31,8 @@ class Waermewiderstand:
         self.r_lambda_l_wand = ((1 / self.r_lambda_pzs(status_styropor_wand, s_styropor, self.l_wand)) + (
                     2 / self.r_lambda(s_fenster, _Lambda_glas, self.fenster))) ** (-1)
 
-        self.r_lambda_boden = self.r_lambda_pzs(status_styropor_boden, s_styropor, self.boden)
+        #self.r_lambda_boden = self.r_lambda_pzs(status_styropor_boden, s_styropor, self.boden)
 
-        print("Der Waermewiderstand des Hauses beträgt", self.r_lambda_gesamt(_Lambda_glas, s_fenster, s_styropor),
-              "K/W.")
 
     def r_lambda(self, s, lambda_allgemein, flaeche):                                                                   # allgemeine Funktion zur Berechnung eines einzelnen Wärmewiderstandes
         r_lambda = s / (lambda_allgemein * flaeche)
@@ -49,19 +47,21 @@ class Waermewiderstand:
         return r_lambda_pzs
 
     def r_lambda_gesamt(self, lambda_glas, s_fenster, s_styropor):
-        r_lambda_gesamt = ((2 / self.r_lambda_dach) + (2 / self.r_lambda_k_wand) + (2 / self.r_lambda_l_wand) + (
-                    1 / self.r_lambda_boden)) ** (-1)
+        r_lambda_gesamt = ((2 / self.r_lambda_dach) + (2 / self.r_lambda_k_wand) + (2 / self.r_lambda_l_wand)) ** (-1)
         return r_lambda_gesamt
+    
+    def r_lambda_boden(self, status_styropor_boden, s_styropor, boden):
+        r_lambda_boden = self.r_lambda_pzs(status_styropor_boden, s_styropor, self.boden)
+        return r_lambda_boden
 
 
 r_lambda_haus = Waermewiderstand(5.6, 0.004, False, False, False, 0.15)
-r_lambda_haus.r_lambda_gesamt(5.6, 0.004, 0.15)
+r_lambda_haus_ohne_boden = r_lambda_haus.r_lambda_gesamt(5.6, 0.004, 0.15)
+print(r_lambda_haus_ohne_boden)
+r_lambda_boden = r_lambda_haus.r_lambda_boden(False, 0.15, 80)
+print(r_lambda_boden)
 
-r_lambda_haus = Waermewiderstand(5.6, 0.004, False, False, False, 0.07)
-r_lambda_haus.r_lambda_gesamt(5.6, 0.004, 0.07)
 
-r_lambda_haus = Waermewiderstand(0.6, 0.044, True, True, True, 0.15)
-r_lambda_haus.r_lambda_gesamt(0.6, 0.044, 0.15)
 
 
 
