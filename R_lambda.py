@@ -26,8 +26,8 @@ class Waermewiderstand:
 
         self.r_lambda_dach = ((1 / self.r_lambda_pzs(status_styropor_dach, s_styropor, self.dach)) + (1 / self.r_lambda(s_fenster, lambda_glas, self.dachfenster))) ** (-1)
         
-        self.r_lambda_k_wand = ((1 / self.r_lambda_pzs(status_styropor_wand, s_styropor,self. k_wand)) + (1 / self.r_lambda(self.s_tuer, lambda_glas, self.tuer)) + (
-                    1 / self.r_lambda(s_fenster, lambda_glas, self.fenster))) ** (-1)                                  # lambda_glas der Tür muss immer gleich bleiben und verändert sich nicht mit der Doppelverglasung
+        self.r_lambda_k_wand = ((1 / self.r_lambda_pzs(status_styropor_wand, s_styropor,self. k_wand)) + (1 / self.r_lambda(self.s_tuer, self.lambda_glas_tuer, self.tuer)) + (
+                    1 / self.r_lambda(s_fenster, lambda_glas, self.fenster))) ** (-1)                                  
 
         self.r_lambda_l_wand = ((1 / self.r_lambda_pzs(status_styropor_wand, s_styropor, self.l_wand)) + (
                     2 / self.r_lambda(s_fenster, lambda_glas, self.fenster))) ** (-1)
