@@ -1,7 +1,7 @@
 class Waermewiderstand:
 
-    def __init__(self, _Lambda_glas, s_fenster, status_styropor_wand, status_styropor_boden, status_styropor_dach, s_styropor):
-        self.lambda_glas = _Lambda_glas
+    def __init__(self, lambda_glas, s_fenster, status_styropor_wand, status_styropor_boden, status_styropor_dach, s_styropor):
+        self.lambda_glas = lambda_glas
         self.s_fenster = s_fenster
         self.status_styropor_wand = status_styropor_wand
         self.status_styropor_boden = status_styropor_boden
@@ -24,13 +24,13 @@ class Waermewiderstand:
         self.lambda_hochlochziegeln = 0.95
         self.lambda_styropor = 0.035
 
-        self.r_lambda_dach = ((1 / self.r_lambda_pzs(status_styropor_dach, s_styropor, self.dach)) + (1 / self.r_lambda(s_fenster, _Lambda_glas, self.dachfenster))) ** (-1)
+        self.r_lambda_dach = ((1 / self.r_lambda_pzs(status_styropor_dach, s_styropor, self.dach)) + (1 / self.r_lambda(s_fenster, lambda_glas, self.dachfenster))) ** (-1)
         
-        self.r_lambda_k_wand = ((1 / self.r_lambda_pzs(status_styropor_wand, s_styropor,self. k_wand)) + (1 / self.r_lambda(self.s_tuer, _Lambda_glas, self.tuer)) + (
-                    1 / self.r_lambda(s_fenster, _Lambda_glas, self.fenster))) ** (-1)                                  # _Lambda_glas der Tür muss immer gleich bleiben und verändert sich nicht mit der Doppelverglasung
+        self.r_lambda_k_wand = ((1 / self.r_lambda_pzs(status_styropor_wand, s_styropor,self. k_wand)) + (1 / self.r_lambda(self.s_tuer, lambda_glas, self.tuer)) + (
+                    1 / self.r_lambda(s_fenster, lambda_glas, self.fenster))) ** (-1)                                  # lambda_glas der Tür muss immer gleich bleiben und verändert sich nicht mit der Doppelverglasung
 
         self.r_lambda_l_wand = ((1 / self.r_lambda_pzs(status_styropor_wand, s_styropor, self.l_wand)) + (
-                    2 / self.r_lambda(s_fenster, _Lambda_glas, self.fenster))) ** (-1)
+                    2 / self.r_lambda(s_fenster, lambda_glas, self.fenster))) ** (-1)
 
         #self.r_lambda_boden = self.r_lambda_pzs(status_styropor_boden, s_styropor, self.boden)
 
@@ -61,7 +61,6 @@ r_lambda_haus_ohne_boden = r_lambda_haus.r_lambda_gesamt(5.6, 0.004, 0.15)
 print(r_lambda_haus_ohne_boden)
 r_lambda_boden = r_lambda_haus.r_lambda_boden(False, 0.15, 80)
 print(r_lambda_boden)
-
 
 
 
