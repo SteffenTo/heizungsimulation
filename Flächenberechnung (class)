@@ -11,32 +11,33 @@ class Flaechenberechnung:
         __flaeche = round(self.__laenge * self.__breite, 3)
         return __flaeche
 
+
 tuer = Flaechenberechnung(2.1, 0.85)
-tuer.flaeche = tuer.getFlaeche()
+tuer_flaeche = tuer.getFlaeche()
 
 fenster = Flaechenberechnung(1.4, 1.14)
-fenster.flaeche = fenster.getFlaeche()
+fenster_flaeche = fenster.getFlaeche()
 
 dachfenster = Flaechenberechnung(0.66, 0.98)
-dachfenster.flaeche = dachfenster.getFlaeche()
+dachfenster_flaeche = dachfenster.getFlaeche()
 
 boden = Flaechenberechnung(10,8)
-boden.flaeche = boden.getFlaeche()
+boden_flaeche = boden.getFlaeche()
 
 l_wand = Flaechenberechnung(10, 3.5)
-l_wand.flaeche = l_wand.getFlaeche()-2*fenster.flaeche
+l_wand_flaeche = l_wand.getFlaeche()-2*fenster_flaeche
 
 k_wand = Flaechenberechnung(3.5 + 0.5 * 4.5, 8)
-k_wand.flaeche = k_wand.getFlaeche() - fenster.flaeche - tuer.flaeche
+k_wand_flaeche = k_wand.getFlaeche() - fenster_flaeche - tuer_flaeche
 
 dach = Flaechenberechnung(math.sqrt(4.5 ** 2 + (0.5 * 8) ** 2), 10)
-dach.flaeche = dach.getFlaeche() - dachfenster.flaeche
+dach_flaeche = dach.getFlaeche() - dachfenster_flaeche
 
 
-print("Die Fläche der Tür beträgt "+ str(tuer.flaeche)+" m^2 ein")
-print("Die Fläche der Fenster beträgt "+ str(fenster.flaeche)+" m^2 ein")
-print("Die Fläche der Dachfenster beträgt "+ str(boden.flaeche)+" m^2 ein")
-print("Die Restfläche der langen Wand beträgt "+ str(l_wand.flaeche)+" m^2 ein")
-print("Die Restfläche der kurzen Wand beträgt "+ str(k_wand.flaeche)+" m^2 ein")
-print("Die Restfläche des Daches beträgt "+ str(dach.flaeche)+" m^2 ein")
+print("Die Fläche der Tür beträgt "+ str(tuer_flaeche)+" m^2 ein")
+print("Die Fläche der Fenster beträgt "+ str(fenster_flaeche)+" m^2 ein")
+print("Die Fläche der Dachfenster beträgt "+ str(boden_flaeche)+" m^2 ein")
+print("Die Restfläche der langen Wand beträgt "+ str(l_wand_flaeche)+" m^2 ein")
+print("Die Restfläche der kurzen Wand beträgt "+ str(k_wand_flaeche)+" m^2 ein")
+print("Die Restfläche des Daches beträgt "+ str(dach_flaeche)+" m^2 ein")
 
