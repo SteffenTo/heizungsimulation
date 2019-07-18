@@ -1,29 +1,42 @@
-class Flaeche:
+import math
+
+class Flaechenberechnung:
     print("Relevante Flächenmaße des Hauses:")
-    def __init__(self,l,b,name):
-        self.laenge = l
-        self.breite = b  
-        self.name = name
 
-    def get_flaeche (self):
-        flaeche = self.laenge * self.breite
-        bezeichner = self.name
-        print (bezeichner + ": " + str(round(flaeche,3)))
+    def __init__(self, l, b):
+        self.__laenge = l
+        self.__breite = b
 
-tuer = Flaeche(2.11,0.85, "Tür")
-tuer.get_flaeche()
+    def getFlaeche(self):
+        __flaeche = round(self.__laenge * self.__breite, 3)
+        return __flaeche
 
-fenster = Flaeche(1.4,1.14, "Fenster")
-fenster.get_flaeche()
+tuer = Flaechenberechnung(2.1, 0.85)
+tuer.flaeche = tuer.getFlaeche()
 
-dachfenster = Flaeche(0.66,0.98, "Dachfenster")
-dachfenster.get_flaeche()
+fenster = Flaechenberechnung(1.4, 1.14)
+fenster.flaeche = fenster.getFlaeche()
 
-l_wand = Flaeche (10,3.5, "Lange Wand")
-l_wand.get_flaeche()
+dachfenster = Flaechenberechnung(0.66, 0.98)
+dachfenster.flaeche = dachfenster.getFlaeche()
 
-k_wand = Flaeche (3.5+0.5*4.5,8, "Kurze Wand")
-k_wand.get_flaeche()
+boden = Flaechenberechnung(10,8)
+boden.flaeche = boden.getFlaeche()
 
-dach = Flaeche (math.sqrt(4.5**2+(0.5*8)**2),10, "Dach")
-dach.get_flaeche()
+l_wand = Flaechenberechnung(10, 3.5)
+l_wand.flaeche = l_wand.getFlaeche()-2*fenster.flaeche
+
+k_wand = Flaechenberechnung(3.5 + 0.5 * 4.5, 8)
+k_wand.flaeche = k_wand.getFlaeche() - fenster.flaeche - tuer.flaeche
+
+dach = Flaechenberechnung(math.sqrt(4.5 ** 2 + (0.5 * 8) ** 2), 10)
+dach.flaeche = dach.getFlaeche() - dachfenster.flaeche
+
+
+print("Die Fläche der Tür beträgt "+ str(tuer.flaeche)+" m^2 ein")
+print("Die Fläche der Fenster beträgt "+ str(fenster.flaeche)+" m^2 ein")
+print("Die Fläche der Dachfenster beträgt "+ str(boden.flaeche)+" m^2 ein")
+print("Die Restfläche der langen Wand beträgt "+ str(l_wand.flaeche)+" m^2 ein")
+print("Die Restfläche der kurzen Wand beträgt "+ str(k_wand.flaeche)+" m^2 ein")
+print("Die Restfläche des Daches beträgt "+ str(dach.flaeche)+" m^2 ein")
+
