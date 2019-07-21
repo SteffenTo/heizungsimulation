@@ -101,3 +101,4 @@ r_lambda_haus_ohne_boden = r_lambda_haus.r_lambda_gesamt(5.6, 0.004, 0.15)
 print(r_lambda_haus_ohne_boden)
 r_lambda_boden = r_lambda_haus.r_lambda_boden(False, 0.15, 80)
 print(r_lambda_boden)
+
