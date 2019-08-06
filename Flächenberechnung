@@ -1,43 +1,42 @@
-b_haus = 8  
-t_haus = 10
-h_erdgeschoss = 3.5
-h_dach = 4.5
+import math
 
-h_fenster = 1.4
-b_fenster = 1.14
+def flaechenberechnung():
+    # Flächen werden für Berechnung des Wärmewiderstands benötigt
+    b_haus = 8                 #Initialbelegung der Variablen für die Breiten- und Höhenangaben
+    l_haus = 10
 
-h_tuer = 2.1
-b_tuer = 0.85
+    h_erdgeschoss = 3.5
+    h_dach = 4.5
 
-b_dachfenster = 0.66
-h_dachfenster = 0.98
+    h_fenster = 1.4
+    b_fenster = 1.14
 
-print()
-print()
-print("Relevante Flächenmaße des Hauses:")
-print()
-      
-flaeche_tuer = h_tuer * b_tuer
-print("Jede Tür nimmt eine Fläche von " + str(round (flaeche_tuer, 3)) + " m^2 ein")
-print ()
+    h_tuer = 2.1
+    b_tuer = 0.85
 
-flaeche_fenster = h_fenster * b_fenster
-print ("Jedes Fenster nimmt eine Fläche von " + str(round (flaeche_fenster, 3)) + " m^2 ein")
-print ()
+    b_dachfenster = 0.66
+    h_dachfenster = 0.98
 
-flaeche_wand_kurz = b_haus * (h_erdgeschoss + 0.5 * h_dach) - flaeche_fenster - flaeche_tuer
-print("Jede kurze Wand nimmt abzüglich der Fläche eines Fensters und einer Tür eine Fläche von " + str(round (flaeche_wand_kurz, 3)) + " m^2 ein")
-print ()
+    print("Die Grundfläche des Hauses weist die Maße 8m x 10m auf. Das Erdgeschoss besitzt eine Höhe von 3,5m und das\n"
+          "Satteldach zusätzlich eine Höhe von 4,5m. \n"
+          "Es sind jeweils 2 Dachfenster (0,66m x 0,98m) und Türen (0,85m x 2,1m) verbaut, sowie 6 normale Fenster \n"
+          "mit den Maßen 1,4m x 1,14m.\n")
 
-flaeche_wand_lang = t_haus * h_erdgeschoss - 2 * flaeche_fenster
-print("Jede lange Wand nimmt abzüglich der Fläche zweier Fenster eine Fläche von " + str(round (flaeche_wand_lang, 3)) + " m^2 ein")
-print ()
+    tuer = h_tuer * b_tuer                          #Berechnung sämtlicher Flächen
+    fenster = h_fenster * b_fenster
+    dachfenster = b_dachfenster * h_dachfenster
 
-flaeche_dachfenster = b_dachfenster * h_dachfenster
-print("Jedes Dachfenster eine Fläche von " + str(round(flaeche_dachfenster, 3)) + "m^2 ein")
-print ()
+    boden = l_haus * b_haus
+    wand_kurz = b_haus * (h_erdgeschoss + 0.5 * h_dach) - fenster - tuer
+    wand_lang = l_haus * h_erdgeschoss - 2 * fenster
+    dach = math.sqrt(h_dach**2 + 0.25 * b_haus**2) * l_haus - dachfenster
 
-flaeche_dach = math.sqrt(h_dach * h_dach + 0.25 * b_haus * b_haus) * t_haus - flaeche_dachfenster
-print ("Jede Dachschräge nimmt abzüglich der Fläche eines Dachfensters  eine Fläche von " + str(round (flaeche_dach, 3)) + " m^2 ein")
-print ()
+    return tuer,fenster,dachfenster,boden,wand_kurz,wand_lang,dach  #Rückgabe sämtlicher Flächen, da sie sonst nur als
+                                                                    # private Variablen innerhalb der Funktion vorliegen
+
+flaeche_tuer,flaeche_fenster,flaeche_dachfenster,flaeche_boden,flaeche_wand_kurz,flaeche_wand_lang,flaeche_dach \
+    = flaechenberechnung()
+
+print(flaeche_tuer,flaeche_fenster,flaeche_dachfenster,flaeche_boden,flaeche_wand_kurz,flaeche_wand_lang,flaeche_dach)
+
 
