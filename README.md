@@ -1,1 +1,1 @@
-Wer das liest ist doof
+Zum Auführen die Dateien Main_Simon.py, temperaturverlauf.py, waermestrom.py und waermewiderstand_flaechen.py in einen Ordner ziehen und dann die Main ausführen
