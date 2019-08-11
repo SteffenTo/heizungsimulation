@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Created on Tue Jul 30 19:00:07 2019
 
@@ -7,6 +6,8 @@ Created on Tue Jul 30 19:00:07 2019
 import math as m
 from temperaturverlauf import get_temperaturverlauf
 from waermestrom import calculate
+from waermewiderstand_flaechen import flaechenberechnung
+from waermewiderstand_flaechen import waermewiderstand
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -60,11 +61,17 @@ for index in range(anzahl_tage):
 plot_days = list()
 for day in raw_days:
     plot_days.append((int(day.split(".")[0]), int(day.split(".")[1])))
- 
-     
+# Aufrufen der Flächenberechnung
+flaeche_tuer, flaeche_fenster, flaeche_dachfenster, flaeche_boden, flaeche_wand_kurz, flaeche_wand_lang, flaeche_dach \
+    = flaechenberechnung()
+# Aufrufen der Wärmewiderstandsberechnung
+r_lambda_haus, r_lambda_boden = waermewiderstand(5.6, 0.004, False, False, False, 0.15, flaeche_tuer,
+                                                 flaeche_fenster, flaeche_dachfenster, flaeche_wand_lang,
+                                                 flaeche_wand_kurz, flaeche_dach, flaeche_boden)
+
 temperaturverlauf = get_temperaturverlauf(months_start, months_end, days, temp_diff, temp_max, temp_min, tmin)
-waermestromverlauf_waende = calculate(temperaturverlauf, r_waende)
-waermestromverlauf_boden = calculate(temperaturverlauf, r_boden)
+waermestromverlauf_waende = calculate(temperaturverlauf, r_lambda_haus)
+waermestromverlauf_boden = calculate(temperaturverlauf, r_lambda_boden)
 
 waermestrom_gesamt = sum( waermestromverlauf_boden) + sum(waermestromverlauf_waende)
 waermestrom_stuendlich = np.array(waermestromverlauf_boden) + np.array(waermestromverlauf_waende)
