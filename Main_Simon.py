@@ -8,46 +8,56 @@ from temperaturverlauf import get_temperaturverlauf
 from waermestrom import calculate
 from waermewiderstand_flaechen import flaechenberechnung
 from waermewiderstand_flaechen import waermewiderstand
+from auswahlmechanismus import daemmung_wahl
 import numpy as np
 import matplotlib.pyplot as plt
 
+
+status_styropor_wand, status_styropor_boden, status_styropor_dach, s_styropor, s_fenster, lambda_glas = daemmung_wahl()
+
 months_start = 1
 months_end = 12
-days = 0  
-s = input("Wollen Sie Standardwerte verwenden? 'j' oder 'n' ?")
-if s.lower() == "j":
-    temp_min = 1
-    temp_max = 20
-    temp_diff = 4
-    tmin = 2
-    r_waende = 5
-    r_boden = 3
-    
-    #23nraw_days =  ["1.1", "1.4.", "1.7", "1.10"]
-          
-else:
-    temp_min = float(input("Geben Sie die Mindesttemperatur für den 1. Januar ein: " )) 
-    print (temp_min, "°C")
-    temp_max = float(input("Geben Sie die Maximaltemperatur für den 1. Juli ein: " ))
-    print (temp_max, "°C")
-    temp_diff = float(input("Wählen Sie den Wert für den Temperaturunterschied am Tag zwischen Tagestiefst-/Tageshöchsttemperatur und der durchschnittlichen Temperatur pro Tag ein: " ))
-    print (temp_diff, "°C")
-    tmin = float(input("Geben Sie den Zeitpunkt der Tagestiefsttemperatur an: " ))
-    print (tmin, "Uhr")
-
-    #print ("Für welchen Zeitraum soll die Temperatur ausgegeben werden? \n 1 - 1 Jahr\n 2 - 1. Januar\n 3 - 1. April\n 4 - 1. Juli\n 5 - 1. Oktober")
-    #Auswahl = input ("Auswahl: ")
-    
-    #if Auswahl == "1":
-    #    months_start = 1; months_end = 12; days = 0                 #Monate: 1 = Januar; Tage: 1 = 1. des Monats mit drin
-    #if Auswahl == "2":
-    #    months_start = 1; months_end = 1; days = 1
-    #if Auswahl == "3":
-    #    months_start = 4; months_end = 4; days = 1
-    #if Auswahl == "4":
-    #    months_start = 7; months_end = 7; days = 1
-    #if Auswahl == "5":
-    #   months_start = 10; months_end = 10; days = 1
+days = 0
+korrekte_eingabe = False
+while korrekte_eingabe == False:
+    s = input("Wollen Sie Standardwerte verwenden? 'j' oder 'n' ?")
+    if s.lower() == "j":
+        temp_min = 1
+        temp_max = 20
+        temp_diff = 4
+        tmin = 2
+        r_waende = 5
+        r_boden = 3
+        korrekte_eingabe = True
+        
+        #23nraw_days =  ["1.1", "1.4.", "1.7", "1.10"]
+              
+    elif s.lower() == "n":
+        temp_min = float(input("Geben Sie die Mindesttemperatur für den 1. Januar ein: " )) 
+        print (temp_min, "°C")
+        temp_max = float(input("Geben Sie die Maximaltemperatur für den 1. Juli ein: " ))
+        print (temp_max, "°C")
+        temp_diff = float(input("Wählen Sie den Wert für den Temperaturunterschied am Tag zwischen Tagestiefst-/Tageshöchsttemperatur und der durchschnittlichen Temperatur pro Tag ein: " ))
+        print (temp_diff, "°C")
+        tmin = float(input("Geben Sie den Zeitpunkt der Tagestiefsttemperatur an: " ))
+        print (tmin, "Uhr")
+        korrekte_eingabe = True
+        #print ("Für welchen Zeitraum soll die Temperatur ausgegeben werden? \n 1 - 1 Jahr\n 2 - 1. Januar\n 3 - 1. April\n 4 - 1. Juli\n 5 - 1. Oktober")
+        #Auswahl = input ("Auswahl: ")
+        
+        #if Auswahl == "1":
+        #    months_start = 1; months_end = 12; days = 0                 #Monate: 1 = Januar; Tage: 1 = 1. des Monats mit drin
+        #if Auswahl == "2":
+        #    months_start = 1; months_end = 1; days = 1
+        #if Auswahl == "3":
+        #    months_start = 4; months_end = 4; days = 1
+        #if Auswahl == "4":
+        #    months_start = 7; months_end = 7; days = 1
+        #if Auswahl == "5":
+        #   months_start = 10; months_end = 10; days = 1
+    else:
+        print("Bitte geben Sie eine gültige Eingabe an.")
+        korrekte_eingabe = False
    
 
 #technical conversion from list of strings to list of tuples(int, int)
@@ -65,7 +75,7 @@ for day in raw_days:
 flaeche_tuer, flaeche_fenster, flaeche_dachfenster, flaeche_boden, flaeche_wand_kurz, flaeche_wand_lang, flaeche_dach \
     = flaechenberechnung()
 # Aufrufen der Wärmewiderstandsberechnung
-r_lambda_haus, r_lambda_boden = waermewiderstand(5.6, 0.004, False, False, False, 0.15, flaeche_tuer,
+r_lambda_haus, r_lambda_boden = waermewiderstand(lambda_glas, s_fenster, status_styropor_wand, status_styropor_boden, status_styropor_dach, s_styropor, flaeche_tuer,
                                                  flaeche_fenster, flaeche_dachfenster, flaeche_wand_lang,
                                                  flaeche_wand_kurz, flaeche_dach, flaeche_boden)
 
