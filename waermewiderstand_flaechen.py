@@ -71,6 +71,4 @@ def waermewiderstand(lambda_glas, s_fenster, status_styropor_wand, status_styrop
 
     return r_lambda_haus, r_lambda_boden
 
-##r_lambda_haus, r_lambda_boden = waermewiderstand(5.6, 0.004, False, False, False, 0.15, flaeche_tuer,
-##                                                 flaeche_fenster, flaeche_dachfenster, flaeche_wand_lang,
-##                                                 flaeche_wand_kurz, flaeche_dach, flaeche_boden)
+
