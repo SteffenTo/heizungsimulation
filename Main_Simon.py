@@ -17,7 +17,7 @@ status_styropor_wand, status_styropor_boden, status_styropor_dach, s_styropor, s
 
 months_start = 1
 months_end = 12
-days = 0
+days = 0                                                    #Kann von 0-30 gehen, 0 steht für einen Start am 1. des Monats um 0 Uhr
 korrekte_eingabe = False
 while korrekte_eingabe == False:
     s = input("Wollen Sie Standardwerte verwenden? 'j' oder 'n' ?")
@@ -79,11 +79,12 @@ r_lambda_haus, r_lambda_boden = waermewiderstand(lambda_glas, s_fenster, status_
                                                  flaeche_fenster, flaeche_dachfenster, flaeche_wand_lang,
                                                  flaeche_wand_kurz, flaeche_dach, flaeche_boden)
 
-temperaturverlauf = get_temperaturverlauf(months_start, months_end, days, temp_diff, temp_max, temp_min, tmin)
-waermestromverlauf_waende = calculate(temperaturverlauf, r_lambda_haus)
-waermestromverlauf_boden = calculate(temperaturverlauf, r_lambda_boden)
+temperaturverlauf_aussen = get_temperaturverlauf(months_start, months_end, days, temp_diff, temp_max, temp_min, tmin)
+temperaturverlauf_keller = 
+waermestromverlauf_waende = calculate(temperaturverlauf_aussen, r_lambda_haus)
+waermestromverlauf_boden = calculate(temperaturverlauf_keller, r_lambda_boden)
 
-waermestrom_gesamt = sum( waermestromverlauf_boden) + sum(waermestromverlauf_waende)
+waermestrom_gesamt = sum(waermestromverlauf_boden) + sum(waermestromverlauf_waende)
 waermestrom_stuendlich = np.array(waermestromverlauf_boden) + np.array(waermestromverlauf_waende)
 
 avg_values_per_month = list()
