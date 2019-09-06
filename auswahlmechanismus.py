@@ -45,7 +45,7 @@ def glas_wahl():
         return (s_fenster, lambda_glas, False)
 
 
-def dämmung_wahl():
+def daemmung_wahl():
     global maßnahme
     korrekte_eingabe = False            #Festlegung der Werte für den ungedämmten Fall
     status_styropor_wand = False            #es müssen nur Veränderungen berücksichtigt und ergänzt werden
