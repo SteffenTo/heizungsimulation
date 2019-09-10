@@ -1,4 +1,3 @@
-
 print("Ein Haus mit bekannten Abmaßen soll gedämmt werden.\n"
       "Für die Bewertung der Maßnahmen steht Ihnen eine Software zur Verfügung, welche den notwendigen Energiebbedarf\n"
       "in Kombination mit verschiedenen Dämmmaßnahmen errechnet.\n"
@@ -12,7 +11,7 @@ print("Ein Haus mit bekannten Abmaßen soll gedämmt werden.\n"
 def s_styropor_wahl():
     if maßnahme == "a":
         s_styropor = 0.06
-        return (True, True, s_styropor)
+        return (True, True, s_styropor) #return (allgemeinen Status, korrekte Eingabe, Styropordicke)
 
     elif maßnahme == "b":
         s_styropor = 0.1
@@ -31,7 +30,7 @@ def glas_wahl():
     if maßnahme == "a":
         s_fenster = 0.026
         lambda_glas = 1
-        return (s_fenster, lambda_glas, True)
+        return (s_fenster, lambda_glas, True) #return (Glasdicke, Wärmeleitfähigkeit, korrekte Eingabe)
 
     elif maßnahme == "b":
         s_fenster = 0.044
@@ -42,7 +41,7 @@ def glas_wahl():
         print("\nEingabe der Komponente ist ungültig. Bitte neue Komponente auswählen.\n")
         s_fenster = 0.004
         lambda_glas = 5.6
-        return (s_fenster, lambda_glas, False)
+        return (s_fenster, lambda_glas, False) 
 
 
 def daemmung_wahl():
