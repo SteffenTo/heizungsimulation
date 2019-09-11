@@ -9,8 +9,9 @@ from waermestrom import calculate
 from waermewiderstand_flaechen import flaechenberechnung
 from waermewiderstand_flaechen import waermewiderstand
 from auswahlmechanismus import daemmung_wahl
+from graph import graph
 import numpy as np
-import matplotlib.pyplot as plt
+
 
 
 status_styropor_wand, status_styropor_boden, status_styropor_dach, s_styropor, s_fenster, lambda_glas = daemmung_wahl()
@@ -80,9 +81,9 @@ r_lambda_haus, r_lambda_boden = waermewiderstand(lambda_glas, s_fenster, status_
                                                  flaeche_wand_kurz, flaeche_dach, flaeche_boden)
 
 temperaturverlauf_aussen = get_temperaturverlauf(months_start, months_end, days, temp_diff, temp_max, temp_min, tmin)
-temperaturverlauf_keller = 
+temperaturverlauf_keller = 1
 waermestromverlauf_waende = calculate(temperaturverlauf_aussen, r_lambda_haus)
-waermestromverlauf_boden = calculate(temperaturverlauf_keller, r_lambda_boden)
+waermestromverlauf_boden = calculate(temperaturverlauf_aussen, r_lambda_boden)
 
 waermestrom_gesamt = sum(waermestromverlauf_boden) + sum(waermestromverlauf_waende)
 waermestrom_stuendlich = np.array(waermestromverlauf_boden) + np.array(waermestromverlauf_waende)
@@ -97,23 +98,7 @@ for month in range(months_end - months_start +1):
     
 #print("gesamt")
 #plt.plot(waermestrom_stuendlich)
-#plt.show()
+#plt.show()5
 
-plt.figure(figsize=(10,5))
-plt.plot(range(1,13),avg_values_per_month)
-plt.title("Jahresverlauf")
-plt.xlabel("Monat")
-plt.ylabel("Durchschnittswärmestrom (in W(h))")
-plt.show()
-
-    
-plt.figure(figsize=(10,5))  
-
-for (day, month) in plot_days:
-    tageswaermestrom = waermestrom_stuendlich[(day-1) * 24+ (month - 1) * 24 * 30 : day * 24 + (month -1)* 24*30]
-    plt.plot(tageswaermestrom, label = str(day) + "." + str(month))
-plt.legend()
-plt.ylabel('Wärmestrom (in W(h))')
-plt.xlabel("Uhrzeit (in Stunden)")
-plt.title("Tagesvergleiche")
-plt.show()
+#Aufrufen der Graphenerzeugung
+graph(avg_values_per_month, plot_days, waermestrom_stuendlich)
