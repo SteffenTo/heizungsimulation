@@ -11,6 +11,7 @@ from waermewiderstand_flaechen import waermewiderstand
 from auswahlmechanismus import daemmung_wahl
 from graph import graph
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 
@@ -27,8 +28,6 @@ while korrekte_eingabe == False:
         temp_max = 20
         temp_diff = 4
         tmin = 2
-        r_waende = 5
-        r_boden = 3
         korrekte_eingabe = True
         
         #23nraw_days =  ["1.1", "1.4.", "1.7", "1.10"]
@@ -61,14 +60,15 @@ while korrekte_eingabe == False:
         korrekte_eingabe = False
    
 
-#technical conversion from list of strings to list of tuples(int, int)
+
     
 raw_days = list()
 
 anzahl_tage = int(input("Wie viele Tage sollen im Tagesvergleich verglichen werden? \n"))
 for index in range(anzahl_tage):
     raw_days.append(input("Bitte geben sie die zu vergleichenden Tage im Format 'dd.mm' ein \n"))
-    
+
+# technical conversion from list of strings to list of tuples(int, int)
 plot_days = list()
 for day in raw_days:
     plot_days.append((int(day.split(".")[0]), int(day.split(".")[1])))
@@ -81,9 +81,9 @@ r_lambda_haus, r_lambda_boden = waermewiderstand(lambda_glas, s_fenster, status_
                                                  flaeche_wand_kurz, flaeche_dach, flaeche_boden)
 
 temperaturverlauf_aussen = get_temperaturverlauf(months_start, months_end, days, temp_diff, temp_max, temp_min, tmin)
-temperaturverlauf_keller = 1
+temperaturverlauf_keller = 1                                                        #Platzhalter
 waermestromverlauf_waende = calculate(temperaturverlauf_aussen, r_lambda_haus)
-waermestromverlauf_boden = calculate(temperaturverlauf_aussen, r_lambda_boden)
+waermestromverlauf_boden = calculate(temperaturverlauf_aussen, r_lambda_boden)      #nachher durch temperaturverlauf_keller ersetzen
 
 waermestrom_gesamt = sum(waermestromverlauf_boden) + sum(waermestromverlauf_waende)
 waermestrom_stuendlich = np.array(waermestromverlauf_boden) + np.array(waermestromverlauf_waende)
