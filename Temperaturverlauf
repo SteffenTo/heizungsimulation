@@ -1,16 +1,61 @@
-temp_min = float(input("Geben Sie die Mindesttemperatur für den 1. Januar ein: " )) 
-print (temp_min, "°C")
-temp_max = float(input("Geben Sie die Maximaltemperatur für den 1. Juli ein: " ))
-print (temp_max, "°C")
-temp_diff = float(input("Wählen Sie den Wert für den Temperaturunterschied am Tag zwischen Tagestiefst-/Tageshöchsttemperatur und der durchschnittlichen Temperatur pro Tag ein: " ))
-print (temp_diff, "°C")
-tmin = float(input("Geben Sie den Zeitpunkt der Tagestiefsttemperatur an: " ))
-print (tmin, "Uhr")
+#Eingabe der Werte
+
+erneute_eingabe_temperaturen = True
+while erneute_eingabe_temperaturen:
+
+    erneute_eingabe_temp_min = True
+    while erneute_eingabe_temp_min:
+        temp_min = float(input("Geben Sie die Mindesttemperatur für den 1. Januar ein: " ))
+        if (temp_min <-70 or temp_min >60):
+            print ("Die Eingabe der Temperatur war ungültig.")
+            erneute_eingabe_temp_min = True       
+        else:
+            print (temp_min, "°C")
+            break
+    
+    erneute_eingabe_temp_max = True
+    while erneute_eingabe_temp_max:
+        temp_max = float(input("Geben Sie die Maximaltemperatur für den 1. Juli ein: " ))
+        if (temp_max <-70 or temp_max >60):
+            print ("Die Eingabe der Temperatur war ungültig.")
+            erneute_eingabe_temp_max = True       
+        else:
+            print (temp_max, "°C")
+            break
+    
+    if (temp_max-temp_min <0):
+        print ("Die eingegebene Minimaltemperatur ist höher als die Maximaltemperatur.")
+        print ("Die Temperaturen müssen erneut eingegeben werden.")
+        erneute_eingabe_temperaturen = True
+    else:
+        break
+
+erneute_eingabe_temp_diff = True
+while erneute_eingabe_temp_diff:
+    temp_diff = float(input("Wählen Sie den Wert für den Temperaturunterschied am Tag zwischen Tagestiefst-/Tageshöchsttemperatur und der durchschnittlichen Temperatur pro Tag ein: " ))
+    if (temp_diff <0 or temp_diff >40):
+       print ("Die Eingabe des Zeitpunktes war ungültig.")
+       erneute_eingabe_tmin = True
+    else:
+        print (temp_diff, "°C")
+        break
+
+erneute_eingabe_tmin = True
+while erneute_eingabe_tmin:
+    tmin = float(input("Geben Sie den Zeitpunkt der Tagestiefsttemperatur an: " ))
+    if (tmin <0 or tmin >24):
+       print ("Die Eingabe des Zeitpunktes war ungültig.")
+       erneute_eingabe_tmin = True
+    else:
+        print (tmin, "Uhr")
+        break
 
 #temp_min = 1
 #temp_max = 20
 #temp_diff = 4
 #tmin = 2 #Uhr
+
+#Auswahl der Zeiträume
 
 print ("Für welchen Zeitraum soll die Temperatur ausgegeben werden? \n 1 - 1 Jahr\n 2 - 1. Januar\n 3 - 1. April\n 4 - 1. Juli\n 5 - 1. Oktober")
 Auswahl = input ("Auswahl: ")
@@ -28,7 +73,7 @@ if Auswahl == "5":
 
 import math as m
 def temperature_Haus(hours):
-    return round((1/2*temp_diff*m.sin(m.pi*1/12*(hours-6-tmin))+((temp_max-temp_min)/2)*m.sin(m.pi*1/4320*(hours-2160))+(((temp_max-temp_min)/2)+temp_min)),2)
+    return round((1/2*temp_diff*21*m.sin(m.pi*1/12*(hours-6-tmin))+((temp_max-temp_min)/2)*m.sin(m.pi*1/4320*(hours-2160))+(((temp_max-temp_min)/2)+temp_min)),2)      
 for hours in range(24*30*(months_start-1), 24*30*(months_end-1)+(24*days), 1): #24 Stunden * 30 Tage 
     print(temperature_Haus(hours))
     
