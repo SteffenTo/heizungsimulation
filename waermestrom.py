@@ -8,6 +8,8 @@ Created on Tue Jul 30 18:50:38 2019
 import numpy as np
 
 def waermestromformel(temp_outside, temp_inside, r_lambda):
+    if temp_outside >= temp_inside:
+        return 0
     return np.divide(temp_outside - temp_inside, r_lambda)
 
 def calculate(list_of_temperatures_outside, r_lambda):
