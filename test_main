@@ -1,4 +1,3 @@
-import math as m
 from temperaturverlauf import get_temperaturverlauf_aussen
 from temperaturverlauf import get_temperaturverlauf_keller
 from waermestrom import calculate
