@@ -1,7 +1,10 @@
+import math as m
+from temperaturverlauf import get_temperaturverlauf
+from waermestrom import calculate
 from waermewiderstand_flaechen import flaechenberechnung
 from waermewiderstand_flaechen import waermewiderstand
 from auswahl_temperatur import randbedingungen, datum_wählen
-from auswahl_dämmung import daemmung_wahl
+from auswahl_daemmung import daemmung_wahl
 from graph import graph
 import numpy as np
 import matplotlib.pyplot as plt
@@ -25,10 +28,10 @@ r_lambda_haus, r_lambda_boden = waermewiderstand(lambda_glas, s_fenster, status_
                                                  flaeche_wand_kurz, flaeche_dach, flaeche_boden)
 
 temperaturverlauf_aussen = get_temperaturverlauf(months_start, months_end, days, temp_diff, temp_max, temp_min, tmin)
-temperaturverlauf_keller = get_temperaturverlauf_keller 
+temperaturverlauf_keller = 1  # Platzhalter
 waermestromverlauf_waende = calculate(temperaturverlauf_aussen, r_lambda_haus)
-waermestromverlauf_boden = calculate(temperaturverlauf_keller,
-                                     r_lambda_boden)  
+waermestromverlauf_boden = calculate(temperaturverlauf_aussen,
+                                     r_lambda_boden)  # nachher durch temperaturverlauf_keller ersetzen
 
 waermestrom_gesamt = sum(waermestromverlauf_boden) + sum(waermestromverlauf_waende)
 waermestrom_stuendlich = np.array(waermestromverlauf_boden) + np.array(waermestromverlauf_waende)
