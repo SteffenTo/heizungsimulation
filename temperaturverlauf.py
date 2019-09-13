@@ -1,20 +1,26 @@
 import math as m
+
+
 def temperaturverlauf_aussen(hours, temp_diff, temp_max, temp_min, tmin):
-    return round((1/2*temp_diff*m.sin(m.pi*1/12*(hours-6-tmin))+((temp_max-temp_min)/2)*m.sin(m.pi*1/4320*(hours-2160))+(((temp_max-temp_min)/2)+temp_min)),2)
+    return round((1 / 2 * temp_diff * m.sin(m.pi * 1 / 12 * (hours - 6 - tmin)) + ((temp_max - temp_min) / 2) * m.sin(
+        m.pi * 1 / 4320 * (hours - 2160)) + (((temp_max - temp_min) / 2) + temp_min)), 2)
+
 
 def get_temperaturverlauf_aussen(months_start, months_end, days, temp_diff, temp_max, temp_min, tmin):
     temperaturverlauf_haus = list()
-    for hours in range(24*30*(months_start-1), 24*30*months_end+(24*days), 1): #24 Stunden * 30 Tage 
+    for hours in range(24 * 30 * (months_start - 1), 24 * 30 * months_end + (24 * days), 1):  # 24 Stunden * 30 Tage
         temperaturverlauf_haus.append(temperaturverlauf_aussen(hours, temp_diff, temp_max, temp_min, tmin))
-    
+
     return temperaturverlauf_haus
 
+
 def temperaturverlauf_keller_funktion(hours):
-    return round((5/2*m.sin(m.pi*1/4320*(hours-2160))+25/2),2)
+    return round((5 / 2 * m.sin(m.pi * 1 / 4320 * (hours - 2160)) + 25 / 2), 2)
+
 
 def get_temperaturverlauf_keller_funktion(months_start, months_end, days):
     temperaturverlauf_keller = list()
-    for hours in range ((24*30*(months_start-1), 24*30*months_end+(24*days), 1)): #24 Stunden * 30 Tage 
-        temperaturverlauf_keller.append(temperaturverlauf_keller(hours))
-                        
+    for hours in range(24 * 30 * (months_start - 1), 24 * 30 * months_end + (24 * days), 1):  # 24 Stunden * 30 Tage
+        temperaturverlauf_keller.append(temperaturverlauf_keller_funktion(hours))
+
     return temperaturverlauf_keller
