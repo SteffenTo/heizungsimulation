@@ -1,3 +1,19 @@
+def temp_gueltig(temp):
+    if -20 <= temp <= 40:
+        print(temp, "°C")
+        return True
+    else:
+        print("Die Temperatur liegt nicht im Geltungsbereich. \n"
+              "Bitte wählen sie eine Temperatur zwischen -20 und 40°C")
+        return False
+
+def check_type(zahl):
+    if type(float(zahl)) == float or type(int(zahl)) == int:
+        return float(zahl)
+    else:
+        print("Bitte tätigen Sie eine gültige Eingabe.")
+        return 50
+
 def randbedingungen():
     korrekte_eingabe = False
     korrekt_diff = False
@@ -15,6 +31,7 @@ def randbedingungen():
             temp_max = 20
             temp_diff = 4
             tmin = 2
+            korrekte_eingabe = True
 
         elif s.lower() == "n":
             print("\nGeben Sie die Tagesschwankung an. Diese muss zwischen 4°C und 15°C liegen")
@@ -59,8 +76,6 @@ def randbedingungen():
     return temp_min, temp_max, temp_diff, tmin
 
 
-temp_min, temp_max, temp_diff, tmin = randbedingungen()
-print(temp_min, temp_max, temp_diff, tmin)
 
 
 def datum_wählen():
