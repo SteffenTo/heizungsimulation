@@ -1,0 +1,78 @@
+def randbedingungen():
+    korrekte_eingabe = False
+    korrekt_diff = False
+    korrekt_t = False
+    korrekt_temp = False
+    korrekt_min = False
+    korrekt_max = False
+
+
+    while korrekte_eingabe == False:
+        print("\nMöchten Sie Standardwerte für den Temperaturverlauf verwenden? 'j' = ja oder 'n' = nein ?")
+        s = input("Eingabe: ")
+        if s.lower() == "j":
+            temp_min = 1
+            temp_max = 20
+            temp_diff = 4
+            tmin = 2
+
+        elif s.lower() == "n":
+            print("\nGeben Sie die Tagesschwankung an. Diese muss zwischen 4°C und 15°C liegen")
+            while korrekt_diff == False:
+                temp_diff = float(input("Eingabe: "))
+                #check_type(temp_diff)
+                if 4 <= temp_diff <= 15:
+                    korrekt_diff = True
+                else:
+                    print("Die Tagesschwankung liegt in einem unrealistischen Bereich.")
+
+            print("\nGeben sie den Zeitpunkt an, zu der die geringste Temperatur vorliegt. "
+                  "Dieser muss zwischen 0 und 5 Uhr nachts liegen")
+            while korrekt_t == False:
+                tmin = float(input("Eingabe: "))
+                if 0 <= tmin <= 5:
+                    korrekt_t = True
+                else:
+                    print("Dieser Zeitpunkt ist unzulässig. Bitte tätigen Sie eine gültige Eingabe.")
+
+            print("\nBitte wählen sie eine Temperatur zwischen -20 und 40°C")
+            while korrekt_temp == False:
+                while korrekt_min == False:
+                    print("\nGeben Sie die geringste Temperatur für den 1. Januar ein: ")
+                    temp_min = float(input("Eingabe: "))
+                    korrekt_min = temp_gueltig(temp_min)
+
+                while korrekt_max == False:
+                    print("\nGeben Sie die maximale Temperatur für den 1. Januar ein: ")
+                    temp_max = float(input("Eingabe: "))
+                    korrekt_max = temp_gueltig(temp_max)
+
+                if temp_min < temp_max:
+                    korrekt_temp = True
+                else:
+                    korrekt_min = False
+                    korrekt_max = False
+                    print("Die Höchsttemperatur muss größer als die Tiefsttemperatur sein.")
+            korrekte_eingabe = True
+        else:
+            print("Bitte tätigen Sie eine gültige Eingabe.")
+    return temp_min, temp_max, temp_diff, tmin
+
+
+temp_min, temp_max, temp_diff, tmin = randbedingungen()
+print(temp_min, temp_max, temp_diff, tmin)
+
+
+def datum_wählen():
+    raw_days = list()
+
+    anzahl_tage = int(input("Wie viele Tage sollen im Tagesvergleich verglichen werden? \n"))
+    for index in range(anzahl_tage):
+        raw_days.append(input("Bitte geben sie die zu vergleichenden Tage im Format 'dd.mm' ein \n"))
+
+    plot_days = list()
+    for day in raw_days:
+        plot_days.append((int(day.split(".")[0]), int(day.split(".")[1])))
+
+    return plot_days
+
