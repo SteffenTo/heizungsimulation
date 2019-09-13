@@ -12,9 +12,9 @@ def get_temperaturverlauf_aussen(months_start, months_end, days, temp_diff, temp
 def temperaturverlauf_keller_funktion(hours):
     return round((5/2*m.sin(m.pi*1/4320*(hours-2160))+25/2),2)
 
-def get_temperaturverlauf_keller_funktion(months_start, months_end, days)
+def get_temperaturverlauf_keller_funktion(months_start, months_end, days):
     temperaturverlauf_keller = list()
-    for hours in range ((24*30*(months_start-1), 24*30*months_end+(24*days), 1): #24 Stunden * 30 Tage 
+    for hours in range ((24*30*(months_start-1), 24*30*months_end+(24*days), 1)): #24 Stunden * 30 Tage 
         temperaturverlauf_keller.append(temperaturverlauf_keller(hours))
                         
     return temperaturverlauf_keller
