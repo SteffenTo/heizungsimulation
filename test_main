@@ -1,0 +1,51 @@
+import math as m
+from temperaturverlauf import get_temperaturverlauf
+from waermestrom import calculate
+from waermewiderstand_flaechen import flaechenberechnung
+from waermewiderstand_flaechen import waermewiderstand
+from auswahl_temperatur import randbedingungen, datum_wählen
+from auswahl_dämmung import daemmung_wahl
+from graph import graph
+import numpy as np
+import matplotlib.pyplot as plt
+
+status_styropor_wand, status_styropor_boden, status_styropor_dach, s_styropor, s_fenster, lambda_glas = daemmung_wahl()
+
+months_start = 1
+months_end = 12
+days = 0  # Kann von 0-30 gehen, 0 steht für einen Start am 1. des Monats um 0 Uhr
+
+temp_min, temp_max, temp_diff, tmin = randbedingungen()
+plot_days = datum_wählen
+# Aufrufen der Flächenberechnung
+flaeche_tuer, flaeche_fenster, flaeche_dachfenster, flaeche_boden, flaeche_wand_kurz, flaeche_wand_lang, flaeche_dach \
+    = flaechenberechnung()
+# Aufrufen der Wärmewiderstandsberechnung
+r_lambda_haus, r_lambda_boden = waermewiderstand(lambda_glas, s_fenster, status_styropor_wand, status_styropor_boden,
+                                                 status_styropor_dach, s_styropor, flaeche_tuer,
+                                                 flaeche_fenster, flaeche_dachfenster, flaeche_wand_lang,
+                                                 flaeche_wand_kurz, flaeche_dach, flaeche_boden)
+
+temperaturverlauf_aussen = get_temperaturverlauf(months_start, months_end, days, temp_diff, temp_max, temp_min, tmin)
+temperaturverlauf_keller = 1  # Platzhalter
+waermestromverlauf_waende = calculate(temperaturverlauf_aussen, r_lambda_haus)
+waermestromverlauf_boden = calculate(temperaturverlauf_aussen,
+                                     r_lambda_boden)  # nachher durch temperaturverlauf_keller ersetzen
+
+waermestrom_gesamt = sum(waermestromverlauf_boden) + sum(waermestromverlauf_waende)
+waermestrom_stuendlich = np.array(waermestromverlauf_boden) + np.array(waermestromverlauf_waende)
+
+avg_values_per_month = list()
+for month in range(months_end - months_start + 1):
+    # print("Monat: {}".format(month))
+    waermestromverlauf_this_month = waermestrom_stuendlich[month * (24 * 30): (month + 1) * 24 * 30]
+    avg_values_per_month.append(np.mean(waermestromverlauf_this_month))
+    # plt.plot(waermestromverlauf_this_month)
+    # plt.show()
+
+# print("gesamt")
+# plt.plot(waermestrom_stuendlich)
+# plt.show()5
+
+# Aufrufen der Graphenerzeugung
+graph(avg_values_per_month, plot_days, waermestrom_stuendlich)
