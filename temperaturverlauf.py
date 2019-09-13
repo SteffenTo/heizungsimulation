@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Jul 24 10:35:30 2019
-
-@author: sbeckmann
-"""
-
 import math as m
 def temperature_Haus(hours, temp_diff, temp_max, temp_min, tmin):
     return round((1/2*temp_diff*m.sin(m.pi*1/12*(hours-6-tmin))+((temp_max-temp_min)/2)*m.sin(m.pi*1/4320*(hours-2160))+(((temp_max-temp_min)/2)+temp_min)),2)
