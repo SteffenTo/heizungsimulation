@@ -13,7 +13,7 @@ def graph(avg_values_per_month, plot_days, waermestrom_stuendlich):
     for (day, month) in plot_days:
         tageswaermestrom = waermestrom_stuendlich[
                            (day - 1) * 24 + (month - 1) * 24 * 30: day * 24 + (month - 1) * 24 * 30]
-        plt.plot(tageswaermestrom, label=str(day) + "." + str(month))
+        plt.plot(np.absolute(tageswaermestrom), label=str(day) + "." + str(month))
     plt.legend()
     plt.ylabel('Wärmestrom (in W(h))')
     plt.xlabel("Uhrzeit (in Stunden)")
