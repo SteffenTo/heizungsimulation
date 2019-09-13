@@ -1,5 +1,5 @@
 from temperaturverlauf import get_temperaturverlauf_aussen
-from temperaturverlauf import get_temperaturverlauf_keller
+from temperaturverlauf import get_temperaturverlauf_keller_funktion
 from waermestrom import calculate
 from waermewiderstand_flaechen import flaechenberechnung
 from waermewiderstand_flaechen import waermewiderstand
