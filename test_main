@@ -27,7 +27,7 @@ r_lambda_haus, r_lambda_boden = waermewiderstand(lambda_glas, s_fenster, status_
                                                  flaeche_fenster, flaeche_dachfenster, flaeche_wand_lang,
                                                  flaeche_wand_kurz, flaeche_dach, flaeche_boden)
 
-temperaturverlauf_aussen = get_temperaturverlauf(months_start, months_end, days, temp_diff, temp_max, temp_min, tmin)
+temperaturverlauf_aussen = get_temperaturverlauf_haus(months_start, months_end, days, temp_diff, temp_max, temp_min, tmin)
 temperaturverlauf_keller = 1  # Platzhalter
 waermestromverlauf_waende = calculate(temperaturverlauf_aussen, r_lambda_haus)
 waermestromverlauf_boden = calculate(temperaturverlauf_aussen,
