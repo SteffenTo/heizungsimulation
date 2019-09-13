@@ -1,0 +1,532 @@
+"""
+def temp_gueltig(temp):
+    if -20 <= temp <= 40:
+        print(temp, "°C")
+        return True
+    else:
+        print("Die Temperatur liegt nicht im Geltungsbereich. \n"
+              "Bitte wählen sie eine Temperatur zwischen -50 und 30°C")
+        return False
+
+
+
+temp_min, temp_max, temp_diff, tmin = randbedingung_temperatur()
+def daemmung_wahl():
+    korrekte_eingabe = False
+    korrekt_min = False
+    korrekt_max = False
+    korrekt_diff = False
+    korrekt_t = False
+
+
+    s = input("Wollen Sie Standardwerte verwenden? 'j' oder 'n' ?")
+    if s.lower() == "j":
+        temp_min = 1
+        temp_max = 20
+        temp_diff = 4
+        tmin = 2
+
+    elif s.lower() == "n":
+        while korrekt_diff == False:
+            temp_diff = float(input("Geben Sie die Tagesdifferenz an: "))
+            if 4 < temp_diff < 15:
+                korrekt_diff = True
+            else:
+                print("Die Tagesschwankung liegt in einem unrealistischen Bereich")
+
+        while korrekt_t == False:
+            tmin = float(input("Geben sie den Zeitpunkt an zu der die geringste Temperatur vorliegt?"))
+            if 0 < tmin < 5:
+                korrekt_t = True
+            else:
+                print("Dieser Zeitpunkt ist unzulässig")
+
+        while korrekte_eingabe == False:
+            while korrekt_min == False:
+                temp_min = float(input("Geben Sie die geringste Temperatur für den 1. Januar ein: "))
+                korrekt_min = temp_gueltig(temp_min)
+
+            while korrekt_max == False:
+                temp_max = float(input("Geben Sie die maximale Temperatur für den 1. Januar ein: "))
+                korrekt_max = temp_gueltig(temp_max)
+
+                if temp_min < temp_max:
+                    korrekte_eingabe = True
+                else:
+                    korrekt_min = False
+                    korrekt_max = False
+                    print("Die Höchsttemperatur muss größer als die Tiefsttemperatur sein. "
+                          "Bitte geben Sie eine gültige Eingabe an.")
+    else:
+        print("Bitte geben Sie eine gültige Eingabe an.")
+    return temp_min, temp_max, temp_diff, tmin
+
+
+temp_min, temp_max, temp_diff, tmin = daemmung_wahl()
+print(temp_min, temp_max, temp_diff, tmin)
+"""
+
+"""
+def temp_gueltig(temp):
+    if -20 <= temp <= 40:
+        print(temp, "°C")
+        return True
+    else:
+        print("Die Temperatur liegt nicht im Geltungsbereich. \n"
+              "Bitte wählen sie eine Temperatur zwischen -50 und 30°C")
+        return False
+
+
+def daemmung_wahl():
+    korrekte_eingabe = False
+    korrekt_min = False
+    korrekt_max = False
+    korrekt_diff = False
+    korrekt_tmin = False
+
+    while korrekte_eingabe == False:
+        s = input("Wollen Sie Standardwerte verwenden? 'j' oder 'n' ?")
+        if s.lower() == "j":
+            temp_min = 1
+            temp_max = 20
+            temp_diff = 4
+            tmin = 2
+            korrekte_eingabe = True
+
+        elif s.lower() == "n":
+            while korrekt_diff == False:
+                temp_diff = float(input("Geben Sie die Tagesdifferenz an: "))
+                if 4 < temp_diff < 15:
+                    korrekt_diff = True
+                else:
+                    print("Die Tagesschwankung liegt in einem unrealistischen Bereich")
+
+            while korrekt_tmin == False:
+                tmin = float(input("Geben sie den Zeitpunkt an zu der die geringste Temperatur vorliegt?"))
+                if 0 < tmin < 5:
+                    korrekt_tmin = True
+                else: print("Dieser Zeitpunkt ist unzulässig")
+
+            while korrekt_min == False:
+                temp_min = float(input("Geben Sie die geringste Temperatur für den 1. Januar ein: "))
+                korrekt_min = temp_gueltig(temp_min)
+
+            while korrekt_max == False:
+                temp_max = float(input("Geben Sie die maximale Temperatur für den 1. Januar ein: "))
+                korrekt_max = temp_gueltig(temp_max)
+
+            if temp_min < temp_max:
+                korrekte_eingabe = True
+            else:
+                print("Die Höchsttemperatur muss größer als die Tiefsttemperatur sein. "
+                      "Bitte geben Sie eine gültige Eingabe an.")
+        else:
+            print("Bitte geben Sie eine gültige Eingabe an.")
+    return temp_min, temp_max, temp_diff, tmin
+
+
+temp_min, temp_max, temp_diff, tmin = daemmung_wahl()
+print(temp_min, temp_max, temp_diff, tmin)
+
+"""
+
+"""def temp_gueltig(temp):
+    if -20 <= temp <= 40:
+        print(temp, "°C")
+        return True
+    else:
+        print("Die Temperatur liegt nicht im Geltungsbereich. \n"
+              "Bitte wählen sie eine Temperatur zwischen -50 und 30°C")
+        return False
+
+
+def daemmung_wahl():
+    temp_min = 1
+    temp_max = 20
+    temp_diff = 4
+    tmin = 2
+
+    korrekte_eingabe = False
+    korrekt_min = False
+    korrekt_max = False
+    korrekt_diff = False
+
+    while korrekte_eingabe == False:
+        s = input("Wollen Sie Standardwerte verwenden? 'j' oder 'n' ?")
+        if s.lower() == "j":
+            korrekte_eingabe = True
+
+        elif s.lower() == "n":
+            while korrekt_min == False:
+                temp_min = float(input("Geben Sie die geringste Temperatur für den 1. Januar ein: "))
+                korrekt_min = temp_gueltig(temp_min)
+
+            while korrekt_max == False:
+                temp_max = float(input("Geben Sie die maximale Temperatur für den 1. Januar ein: "))
+                korrekt_max = temp_gueltig(temp_max)
+
+            if temp_min < temp_max:
+                pass  # korrekte_eingabe = True
+            else:
+                print("Die Höchsttemperatur muss größer als die Tiefsttemperatur sein. "
+                      "Bitte geben Sie eine gültige Eingabe an.")
+
+            while korrekt_diff == False:
+                temp_diff = float(input("Geben Sie die Tagesdifferenz an: "))
+                if 4 < temp_diff < 15:
+                    korrekt_diff = True
+                else:
+                    print("Die Tagesschwankung liegt in einem unrealistischen Bereich")
+        else:
+            print("Bitte geben Sie eine gültige Eingabe an.")
+    return temp_min, temp_max, temp_diff
+
+
+temp_min, temp_max, temp_diff = daemmung_wahl()
+print(temp_min, temp_max, temp_diff)
+"""
+"""
+def temp_gueltig(temp):
+    if -50 <= temp <= 30:
+        print(temp, "°C")
+        return True
+    else:
+        print("Die Temperatur liegt nicht im Geltungsbereich. \n"
+              "Bitte wählen sie eine Temperatur zwischen -50 und 30°C")
+        return False
+
+def daemmung_wahl():
+    temp_min = 1
+    temp_max = 20
+    temp_diff = 4
+    tmin = 2
+
+    korrekte_eingabe = False
+    korrekt_min = False
+    korrekt_max = False
+
+    while korrekte_eingabe == False:
+        s = input("Wollen Sie Standardwerte verwenden? 'j' oder 'n' ?")
+        if s.lower() == "j":
+            korrekte_eingabe = True
+
+        elif s.lower() == "n":
+            while korrekt_min == False:
+                temp_min = float(input("Geben Sie die geringste Temperatur für den 1. Januar ein: "))
+                korrekt_min = temp_gueltig(temp_min)
+
+            while korrekt_max == False:
+                temp_max = float(input("Geben Sie die maximale Temperatur für den 1. Januar ein: "))
+                korrekt_max = temp_gueltig(temp_max)
+
+            if temp_min < temp_max:
+                korrekte_eingabe = True
+            else:
+                print("Die Höchsttemperatur muss größer als die Tiefsttemperatur sein. "
+                      "Bitte geben Sie eine gültige Eingabe an.")
+               
+
+        else:
+            print("Bitte geben Sie eine gültige Eingabe an.")
+    return temp_min, temp_max, temp_diff
+
+
+temp_min, temp_max, temp_diff = daemmung_wahl()
+print(temp_min, temp_max, temp_diff)"""
+
+
+"""
+def daemmung_wahl():
+    temp_min = 1
+    temp_max = 20
+    temp_diff = 4
+    tmin = 2
+
+    korrekte_eingabe = False
+
+
+    s = input("Wollen Sie Standardwerte verwenden? 'j' oder 'n' ?")
+    if s.lower() == "j":
+            pass
+
+    elif s.lower() == "n":
+        while korrekte_eingabe == False:
+            korrekt_min = False
+            while korrekt_min == False:
+                temp_min = float(input("Geben Sie die Mindesttemperatur für den 1. Januar ein: "))
+
+                if temp_min > -51 and temp_min < 30:
+                    print(temp_min, "°C")
+                    korrekt_min = True
+                else:
+                    print("Die Tiefsttemperatur liegt nicht im Geltungsbereich. \n"
+                          "Bitte wählen sie eine Temperatur zwischen -50 und 30°C")
+
+            korrekt_max = False
+            while korrekt_max == False:
+                temp_max = input("Geben Sie die Mindesttemperatur für den 1. Januar ein: ")
+
+                if type(temp_max) == float and temp_min > -51 and temp_min < 30:
+                    print(temp_max, "°C")
+                    korrekt_max = False
+                else:
+                    print("Die Höchsttemperatur liegt nicht im Geltungsbereich. \n"
+                          "Bitte wählen sie eine Temperatur zwischen -50 und 30°C")
+
+            if temp_min < temp_max:
+                print("Die Höchsttemperatur muss größer als die Tiefsttemperatur sein. "
+                      "Bitte geben Sie eine gültige Eingabe an.")
+                korrekte_eingabe = True
+            else:
+                print("Die Tiefsttemperatur liegt nicht im Geltungsbereich. \n"
+                      "Bitte wählen sie eine Temperatur zwischen -50 und 30°C")
+                # temp_min = float(input("Geben Sie die Mindesttemperatur für den 1. Januar ein: "))
+        else:
+            print("Bitte geben Sie eine gültige Eingabe an.")
+
+    return temp_min, korrekte_eingabe
+
+temp_min, korrekte_eingabe = daemmung_wahl()
+print(temp_min, korrekte_eingabe)
+
+
+"""
+
+""""while korrekte_eingabe == False:
+    s = input("Wollen Sie Standardwerte verwenden? 'j' oder 'n' ?")
+    if s.lower() == "j":
+        temp_min = 1
+        temp_max = 20
+        temp_diff = 4
+        tmin = 2
+        r_waende = 5
+        r_boden = 3
+        korrekte_eingabe = True
+
+        # 23nraw_days =  ["1.1", "1.4.", "1.7", "1.10"]
+
+    elif s.lower() == "n":
+        temp_min = float(input("Geben Sie die Mindesttemperatur für den 1. Januar ein: "))
+        print(temp_min, "°C")
+
+        temp_max = float(input("Geben Sie die Maximaltemperatur für den 1. Juli ein: "))
+        print(temp_max, "°C")
+        temp_diff = float(input(
+            "Wählen Sie den Wert für den Temperaturunterschied am Tag zwischen Tagestiefst-/Tageshöchsttemperatur und der durchschnittlichen Temperatur pro Tag ein: "))
+        print(temp_diff, "°C")
+        tmin = float(input("Geben Sie den Zeitpunkt der Tagestiefsttemperatur an: "))
+        print(tmin, "Uhr")
+        korrekte_eingabe = True
+        # print ("Für welchen Zeitraum soll die Temperatur ausgegeben werden? \n 1 - 1 Jahr\n 2 - 1. Januar\n 3 - 1. April\n 4 - 1. Juli\n 5 - 1. Oktober")
+        # Auswahl = input ("Auswahl: ")
+
+        # if Auswahl == "1":
+        #    months_start = 1; months_end = 12; days = 0                 #Monate: 1 = Januar; Tage: 1 = 1. des Monats mit drin
+        # if Auswahl == "2":
+        #    months_start = 1; months_end = 1; days = 1
+        # if Auswahl == "3":
+        #    months_start = 4; months_end = 4; days = 1
+        # if Auswahl == "4":
+        #    months_start = 7; months_end = 7; days = 1
+        # if Auswahl == "5":
+        #   months_start = 10; months_end = 10; days = 1
+    else:
+        print("Bitte geben Sie eine gültige Eingabe an.")
+        korrekte_eingabe = False
+
+
+"""
+"""
+def glas_wahl():
+    if maßnahme == "a":
+        s_fenster = 0.026
+        lambda_glas = 1
+        return (s_fenster, lambda_glas, True) #return (Glasdicke, Wärmeleitfähigkeit, korrekte Eingabe)
+
+    elif maßnahme == "b":
+        s_fenster = 0.044
+        lambda_glas = 0.06
+        return (s_fenster, lambda_glas, True)
+
+    else:   #für den Fall einer ungültigen Eingabe
+        print("\nEingabe der Komponente ist ungültig. Bitte neue Komponente auswählen.\n")
+        s_fenster = 0.004
+        lambda_glas = 5.6
+        return (s_fenster, lambda_glas, False)
+
+def daemmung_wahl():
+    temp_min = 1
+    temp_max = 20
+    temp_diff = 4
+    tmin = 2
+
+    korrekte_eingabe = False
+
+
+    s = input("Wollen Sie Standardwerte verwenden? 'j' oder 'n' ?")
+    if s.lower() == "j":
+            pass
+
+    elif s.lower() == "n":
+        while korrekte_eingabe == False:
+            temp_min = float(input("Geben Sie die Mindesttemperatur für den 1. Januar ein: "))
+
+            if temp_min > -51 and temp_min < 30:
+                print(temp_min, "°C")
+            else:
+                print("Bitte geben Sie eine gültige Eingabe an.")
+
+            temp_max = float(input("Geben Sie die Maximaltemperatur für den 1. Juli ein: "))
+            if temp_max > -50 and temp_max <= 30:
+                print(temp_max, "°C")
+            else:
+                print("Die Höchsttemperatur liegt nicht im Geltungsbereich. \n"
+                      "Bitte wählen sie eine Temperatur zwischen -50 und 30°C")
+                # temp_max = float(input("Geben Sie die Maximaltemperatur für den 1. Juli ein: "))
+
+            if temp_min < temp_max:
+                print("Die Höchsttemperatur muss größer als die Tiefsttemperatur sein. "
+                      "Bitte geben Sie eine gültige Eingabe an.")
+                korrekte_eingabe = True
+            else:
+                print("Die Tiefsttemperatur liegt nicht im Geltungsbereich. \n"
+                      "Bitte wählen sie eine Temperatur zwischen -50 und 30°C")
+                # temp_min = float(input("Geben Sie die Mindesttemperatur für den 1. Januar ein: "))
+        else:
+            print("Bitte geben Sie eine gültige Eingabe an.")
+
+    return temp_min, korrekte_eingabe
+
+temp_min, korrekte_eingabe = daemmung_wahl()
+print(temp_min, korrekte_eingabe)
+"""
+""" while korrekte_eingabe == False:    #solange diese Bedingung erfüllt ist, ist die Auswahl der Dämmung nicht
+                                            #abgeschlossen
+        #Legende: Gebäudekomponente
+        print ("Welche Gebäudekomponente soll gedämmt werden?\n 1 - Wände\n 2 - Dach\n 3 - Kellerboden\n "
+               "4 - Fenster und Türen\n 5 - alles\n 6 - Betrachtung des ungedämmten Altbaus\n "
+               "Bestätigen Sie alle Eingaben mithilfe der Enter-Taste")
+
+        komponente = input("Komponente: ")      #Eingabe der Komponente durch Nutzer entsprechend der Legende
+
+        # 1. Verschleifung: Wahl der zu dämmenden Komponente
+        if komponente == "1":
+            print ("\nDämmung der Wände durch Styroporschicht der Dicke \n a - 6cm\n b - 10cm\n c - 15cm")
+            maßnahme = input("Variante: ")      #Eingabe der Maßnahme durch Nutzer entsprechend der Legende,
+                                                    # springt in entsprechende 2. Schleife
+            (status_styropor_wand, korrekte_eingabe, s_styropor) = s_styropor_wahl()     #hier: 2.Schleife für die Wahl
+                                                                                            #des Styropors
+
+        elif komponente == "2":
+            print ("\nDämmung des Dachs durch Styroporschicht der Dicke \n a - 6cm\n b - 10cm\n c - 15cm")
+            maßnahme = input("Variante: ")
+            (status_styropor_dach, korrekte_eingabe, s_styropor) = s_styropor_wahl()
+
+        elif komponente == "3":
+            print ("\nDämmung des Kellerboden durch Styroporschicht der Dicke \n a - 6cm\n b - 10cm\n c - 15cm")
+            maßnahme = input("Variante: ")
+            (status_styropor_boden, korrekte_eingabe, s_styropor) = s_styropor_wahl()
+
+        elif komponente == "4":     #hier: 2.Schleife für die Wahl der Verglasung
+            print()
+            print("\nDämmung der Fenster und Türen durch\n a - Zweifach-Verbundglas\n b - Dreifach-Verbundglas")
+            maßnahme = input("Variante: ")
+            (s_fenster, lambda_glas, korrekte_eingabe) = glas_wahl()
+
+        elif komponente == "5":     #keine 2. Schleife nötig, da alle notwendigen Informationen bekannt
+            print("\nEs wird eine Dämmung sämtlicher Komponenten durch 15cm dickes Styropor und Dreifachverbundglas "
+                  "vorgenommen")
+
+            s_fenster = 0.044
+            lambda_glas = 0.06
+            s_styropor = 0.15
+            status_styropor_boden = True
+            status_styropor_wand = True
+            status_styropor_dach = True
+            korrekte_eingabe = True
+
+        elif komponente == "6":    #keine 2. Schleife nötig, da alle notwendigen Informationen bereits zu Beginn bekannt
+            korrekte_eingabe = True
+            print("\nEs wird der Wärmestrom des ungedämmten Altbaus betrachtet")
+
+        else:   #für den Fall einer ungültigen Eingabe
+            print("\nEingabe der Komponente ist ungültig. Bitte neue Komponente auswählen.\n")
+    return (status_styropor_wand, status_styropor_boden, status_styropor_dach, s_styropor, s_fenster, lambda_glas)
+
+status_styropor_wand, status_styropor_boden, status_styropor_dach, s_styropor, s_fenster, lambda_glas = daemmung_wahl()
+
+
+def randbedingung_temperatur():
+    korrekte_eingabe = False
+    while korrekte_eingabe == False:
+        s = input("Wollen Sie Standardwerte verwenden? 'j' oder 'n' ?")
+        if s.lower() == "j":
+            temp_min = 1
+            temp_max = 20
+
+            temp_diff = 4
+            tmin = 2
+            r_waende = 5
+            r_boden = 3
+            korrekte_eingabe = True
+            return temp_min, temp_max, temp_diff, tmin
+
+            # 23nraw_days =  ["1.1", "1.4.", "1.7", "1.10"]
+
+        elif s.lower() == "n":
+            temp_min = float(input("Geben Sie die Mindesttemperatur für den 1. Januar ein: "))
+            if temp_min > -51 and temp_min < 30:
+                print(temp_min, "°C")
+                korrekte_eingabe = True
+                return temp_min, True
+            else:
+                print("Die Tiefsttemperatur liegt nicht im Geltungsbereich. \n"
+                    "Bitte wählen sie eine Temperatur zwischen -50 und 30°C")
+                #temp_min = float(input("Geben Sie die Mindesttemperatur für den 1. Januar ein: "))
+                return 0, False
+        else:
+            print("Bitte geben Sie eine gültige Eingabe an.")
+            return 0, False
+    return temp_min, korrekte_eingabe
+
+
+temp_min, korrekte_eingabe = randbedingung_temperatur()
+
+print(temp_min, korrekte_eingabe)
+         
+            temp_max = float(input("Geben Sie die Maximaltemperatur für den 1. Juli ein: "))
+            if temp_max > -50 and temp_max <= 30:
+                print(temp_max, "°C")
+            else:
+                print("Die Höchsttemperatur liegt nicht im Geltungsbereich. \n"
+                    "Bitte wählen sie eine Temperatur zwischen -50 und 30°C")
+                #temp_max = float(input("Geben Sie die Maximaltemperatur für den 1. Juli ein: "))
+
+            if temp_min > temp_max:
+                print("Die Höchsttemperatur muss größer als die Tiefsttemperatur sein. "
+                    "Bitte geben Sie eine gültige Eingabe an.")
+            else:
+                pass
+                
+
+        temp_diff = float(input("Wählen Sie den Wert für den Temperaturunterschied am Tag zwischen "
+                                "Tagestiefst-/Tageshöchsttemperatur und der durchschnittlichen Temperatur pro Tag ein: "))
+        print(temp_diff, "°C")
+        tmin = float(input("Geben Sie den Zeitpunkt der Tagestiefsttemperatur an: "))
+        print(tmin, "Uhr")
+        korrekte_eingabe = True
+        return temp_min, temp_max, temp_diff, tmin
+            # print ("Für welchen Zeitraum soll die Temperatur ausgegeben werden? \n 1 - 1 Jahr\n 2 - 1. Januar\n 3 - 1. April\n 4 - 1. Juli\n 5 - 1. Oktober")
+            # Auswahl = input ("Auswahl: ")
+
+            # if Auswahl == "1":
+            #    months_start = 1; months_end = 12; days = 0                 #Monate: 1 = Januar; Tage: 1 = 1. des Monats mit drin
+            # if Auswahl == "2":
+            #    months_start = 1; months_end = 1; days = 1
+            # if Auswahl == "3":
+            #    months_start = 4; months_end = 4; days = 1
+            # if Auswahl == "4":
+            #    months_start = 7; months_end = 7; days = 1
+            # if Auswahl == "5":
+            #   months_start = 10; months_end = 10; days = 1
+"""
