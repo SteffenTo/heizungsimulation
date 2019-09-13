@@ -41,7 +41,7 @@ def glas_wahl():
         print("\nEingabe der Komponente ist ungültig. Bitte neue Komponente auswählen.\n")
         s_fenster = 0.004
         lambda_glas = 5.6
-        return (s_fenster, lambda_glas, False) 
+        return (s_fenster, lambda_glas, False)
 
 
 def daemmung_wahl():
@@ -82,7 +82,6 @@ def daemmung_wahl():
             (status_styropor_boden, korrekte_eingabe, s_styropor) = s_styropor_wahl()
 
         elif komponente == "4":     #hier: 2.Schleife für die Wahl der Verglasung
-            print()
             print("\nDämmung der Fenster und Türen durch\n a - Zweifach-Verbundglas\n b - Dreifach-Verbundglas")
             maßnahme = input("Variante: ")
             (s_fenster, lambda_glas, korrekte_eingabe) = glas_wahl()
