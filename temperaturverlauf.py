@@ -10,7 +10,7 @@ def get_temperaturverlauf_aussen(months_start, months_end, days, temp_diff, temp
     return temperaturverlauf_haus
 
 def temperaturverlauf_keller_funktion(hours):
-    return round((2,5*m.sin(m.pi*1/4320*(hours-2160))+12,5),2)
+    return round((5/2*m.sin(m.pi*1/4320*(hours-2160))+25/2),2)
 
 def get_temperaturverlauf_keller_funktion(months_start, months_end, days)
     temperaturverlauf_keller = list()
