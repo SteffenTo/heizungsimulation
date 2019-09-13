@@ -16,3 +16,5 @@ def get_temperaturverlauf_keller (months_start, months_end, days)
     temperaturverlauf_keller = list()
     for hours in range ((24*30*(months_start-1), 24*30*months_end+(24*days), 1): #24 Stunden * 30 Tage 
         temperaturverlauf_keller.append(temperaturverlauf_keller(hours))
+                        
+    return temperaturverlauf_keller
