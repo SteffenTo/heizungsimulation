@@ -2,6 +2,7 @@ import math as m
 from temperaturverlauf import get_temperaturverlauf_aussen
 from temperaturverlauf import get_temperaturverlauf_keller_funktion
 from waermestrom import calculate
+from waermestrom import waermestrom_durchschnitt_berechnung
 from waermewiderstand_flaechen import flaechenberechnung
 from waermewiderstand_flaechen import waermewiderstand
 from auswahl_daemmung import daemmung_wahl
@@ -37,17 +38,12 @@ waermestromverlauf_boden = calculate(temperaturverlauf_keller,
 waermestrom_gesamt = sum(waermestromverlauf_boden) + sum(waermestromverlauf_waende)
 waermestrom_stuendlich = np.array(waermestromverlauf_boden) + np.array(waermestromverlauf_waende)
 
-avg_values_per_month = list()
-for month in range(months_end - months_start + 1):
-    # print("Monat: {}".format(month))
-    waermestromverlauf_this_month = waermestrom_stuendlich[month * (24 * 30): (month + 1) * 24 * 30]
-    avg_values_per_month.append(np.mean(waermestromverlauf_this_month))
-    # plt.plot(waermestromverlauf_this_month)
-    # plt.show()
+#Berechnen des Durchschnittlichen Waermestroms pro Monat
+waermestrom_durchschnitt = waermestrom_durchschnitt_berechnung(months_start, months_end, waermestrom_stuendlich)
 
 # print("gesamt")
 # plt.plot(waermestrom_stuendlich)
 # plt.show()5
 
 # Aufrufen der Graphenerzeugung
-graph(avg_values_per_month, plot_days, waermestrom_stuendlich)
+graph(waermestrom_durchschnitt, plot_days, waermestrom_stuendlich)
