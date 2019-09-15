@@ -1,8 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
-def graph(avg_values_per_month, plot_days, waermestrom_stuendlich):
+def graph(waermestrom_durchschnitt, plot_days, waermestrom_stuendlich):
     plt.figure(figsize=(10, 5))
-    plt.plot(range(1, 13), np.absolute(avg_values_per_month))
+    plt.plot(range(1, 13), np.absolute(waermestrom_durchschnitt))
     plt.title("Jahresverlauf")
     plt.xlabel("Monat")
     plt.ylabel("Durchschnittswärmestrom (in W(h))")
@@ -19,4 +19,3 @@ def graph(avg_values_per_month, plot_days, waermestrom_stuendlich):
     plt.xlabel("Uhrzeit (in Stunden)")
     plt.title("Tagesvergleiche")
     plt.show()
-
