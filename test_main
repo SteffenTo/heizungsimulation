@@ -5,13 +5,14 @@ from waermestrom import calculate
 from waermestrom import waermestrom_durchschnitt_berechnung
 from waermewiderstand_flaechen import flaechenberechnung
 from waermewiderstand_flaechen import waermewiderstand
-from auswahl_daemmung import daemmung_wahl
+from auswahl_daemmung import daemmung_wahl, ungedaemmt
 from auswahl_temperatur import randbedingungen, datum_wählen
 from graph import graph
 import numpy as np
 import matplotlib.pyplot as plt
 
 status_styropor_wand, status_styropor_boden, status_styropor_dach, s_styropor, s_fenster, lambda_glas = daemmung_wahl()
+status_styropor_wand, status_styropor_boden, status_styropor_dach, s_styropor, s_fenster, lambda_glas = ungedaemmt() 
 
 months_start = 1
 months_end = 12
