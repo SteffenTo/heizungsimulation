@@ -50,8 +50,9 @@ graph(waermestrom_durchschnitt, plot_days, waermestrom_stuendlich)
 
 
 #Wiederholung der Rechnung für ungedämmten Altbau
-r_lambda_haus, r_lambda_boden = waermewiderstand(5.6, 0.004, False, False, False, 0, flaeche_tuer, flaeche_fenster,
-                                                flaeche_dachfenster, flaeche_wand_lang, flaeche_wand_kurz, flaeche_dach, flaeche_boden)
+r_lambda_haus, r_lambda_boden = waermewiderstand(5.6, 0.004, False, False, False, 0, flaeche_tuer,
+                                                 flaeche_fenster, flaeche_dachfenster, flaeche_wand_lang,
+                                                 flaeche_wand_kurz, flaeche_dach, flaeche_boden))
 
 waermestromverlauf_waende = calculate(temperaturverlauf_aussen, r_lambda_haus)
 waermestromverlauf_boden = calculate(temperaturverlauf_keller, r_lambda_boden)
