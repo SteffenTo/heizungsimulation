@@ -43,18 +43,17 @@ def glas_wahl():
         lambda_glas = 5.6
         return (s_fenster, lambda_glas, False)
 
-def ungedaemmt():
-    return (False , False , False, 0, 0.004, 5.6)      #Festlegung der Werte für den ungedämmten Fall
-
-
 
 def daemmung_wahl():
     global maßnahme
     korrekte_eingabe = False
-
-    (status_styropor_wand, status_styropor_boden, status_styropor_dach, s_styropor, s_fenster, lambda_glas) \
-        = ungedaemmt()          #Festlegung der Werte für den ungedämmten Fall
-                                    # es müssen nur Veränderungen berücksichtigt und ergänzt werden
+                                      
+    status_styropor_wand = False      #Festlegung der Werte für den ungedämmten Fall
+    status_styropor_boden = False        # es müssen nur Veränderungen berücksichtigt und ergänzt werden 
+    status_styropor_dach = False 
+    s_styropor = 0 
+    s_fenster = 0.004
+    lambda_glas = 5.6         
 
     while korrekte_eingabe == False:    #solange diese Bedingung erfüllt ist, ist die Auswahl der Dämmung nicht
                                             #abgeschlossen
