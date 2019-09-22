@@ -1,9 +1,9 @@
 import matplotlib.pyplot as plt
 import numpy as np
-def graph(waermestrom_durchschnitt, plot_days, waermestrom_stuendlich):
+def graph(waermestrom_durchschnitt, plot_days, waermestrom_stuendlich, name_jahr, name_tag):
     plt.figure(figsize=(10, 5))
     plt.plot(range(1, 13), np.absolute(waermestrom_durchschnitt))
-    plt.title("Jahresverlauf")
+    plt.title(name_jahr)
     plt.xlabel("Monat")
     plt.ylabel("Durchschnittswärmestrom (in W(h))")
 
@@ -17,5 +17,5 @@ def graph(waermestrom_durchschnitt, plot_days, waermestrom_stuendlich):
     plt.legend()
     plt.ylabel("Wärmestrom (in W(h))")
     plt.xlabel("Uhrzeit (in Stunden)")
-    plt.title("Tagesvergleiche")
+    plt.title(name_tag)
     plt.show()
