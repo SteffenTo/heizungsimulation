@@ -46,7 +46,7 @@ waermestrom_durchschnitt = waermestrom_durchschnitt_berechnung(months_start, mon
 # plt.show()5
 
 # Aufrufen der Graphenerzeugung
-graph(waermestrom_durchschnitt, plot_days, waermestrom_stuendlich)
+graph(waermestrom_durchschnitt, plot_days, waermestrom_stuendlich, "Jahresvergleich", "Tagesvergleich")
 
 #Wiederholung der Rechnung für ungedämmten Altbau
 r_lambda_haus, r_lambda_boden = waermewiderstand(5.6, 0.004, False, False, False, 0, flaeche_tuer,
@@ -64,4 +64,4 @@ waermestrom_durchschnitt = waermestrom_durchschnitt_berechnung(months_start, mon
 
 
 # Aufrufen der Graphenerzeugung
-graph(waermestrom_durchschnitt, plot_days, waermestrom_stuendlich)
+graph(waermestrom_durchschnitt, plot_days, waermestrom_stuendlich, "Referenzjahresvergleich ungedämmter Altbau", "Referenztagesvergleich ungedämmter Altbau")
