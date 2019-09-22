@@ -15,7 +15,7 @@ def graph(waermestrom_durchschnitt, plot_days, waermestrom_stuendlich):
                            (day - 1) * 24 + (month - 1) * 24 * 30: day * 24 + (month - 1) * 24 * 30]
         plt.plot(np.absolute(tageswaermestrom), label=str(day) + "." + str(month))
     plt.legend()
-    plt.ylabel('Wärmestrom (in W(h))')
+    plt.ylabel("Wärmestrom (in W(h))")
     plt.xlabel("Uhrzeit (in Stunden)")
     plt.title("Tagesvergleiche")
     plt.show()
