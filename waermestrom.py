@@ -7,16 +7,19 @@ def waermestromformel(temp_outside, temp_inside, r_lambda):
     return np.divide(temp_outside - temp_inside, r_lambda)
 
 
-def calculate(list_of_temperatures_outside, r_lambda):
+def calculate(list_of_temperatures_outside, r_lambda, t_tag, t_nacht, t1, t2):
     waermestrom = list()
 
     for index, item in enumerate(list_of_temperatures_outside):
         hour = index % 24
 
-        if 10 <= hour and hour <= 18:
-            temp_inside = 21
+        if t1 <= hour < t2:
+            temp_inside = t_tag
         else:
-            temp_inside = 18
+            temp_inside = t_nacht
+
+        waermestrom.append(waermestromformel(item, temp_inside, r_lambda))
+    return waermestrom
 
         waermestrom.append(waermestromformel(item, temp_inside, r_lambda))
     return waermestrom
