@@ -28,9 +28,11 @@ r_lambda_haus, r_lambda_boden = waermewiderstand(lambda_glas, s_fenster, status_
                                                  status_styropor_dach, s_styropor, flaeche_tuer,
                                                  flaeche_fenster, flaeche_dachfenster, flaeche_wand_lang,
                                                  flaeche_wand_kurz, flaeche_dach, flaeche_boden)
-
+# Aufrufen der Temperaturverläufe
 temperaturverlauf_aussen = get_temperaturverlauf_aussen(months_start, months_end, days, temp_diff, temp_max, temp_min, tmin)
 temperaturverlauf_keller = get_temperaturverlauf_keller_funktion(months_start, months_end, days)
+
+# Aufrufen der Wärmestromverläufe
 waermestromverlauf_waende = calculate(temperaturverlauf_aussen, r_lambda_haus, t_tag, t_nacht, t1, t2)
 waermestromverlauf_boden = calculate(temperaturverlauf_keller, r_lambda_boden,  t_tag, t_nacht, t1, t2)
 
@@ -40,12 +42,6 @@ waermestrom_stuendlich = np.array(waermestromverlauf_boden) + np.array(waermestr
 #Berechnen des Durchschnittlichen Waermestroms pro Monat
 waermestrom_durchschnitt = waermestrom_durchschnitt_berechnung(months_start, months_end, waermestrom_stuendlich)
 
-# print("gesamt")
-# plt.plot(waermestrom_stuendlich)
-# plt.show()5
-
-# Aufrufen der Graphenerzeugung
-graph(waermestrom_durchschnitt, plot_days, waermestrom_stuendlich, "Jahresvergleich", "Tagesvergleich")
 
 #Wiederholung der Rechnung für ungedämmten Altbau
 ref_r_lambda_haus, ref_r_lambda_boden = waermewiderstand(5.6, 0.004, False, False, False, 0, flaeche_tuer,
@@ -58,9 +54,8 @@ ref_waermestromverlauf_boden = calculate(temperaturverlauf_keller, ref_r_lambda_
 ref_waermestrom_gesamt = sum(ref_waermestromverlauf_boden) + sum(ref_waermestromverlauf_waende)
 ref_waermestrom_stuendlich = np.array(ref_waermestromverlauf_boden) + np.array(ref_waermestromverlauf_waende)
 
-#Berechnen des Durchschnittlichen Waermestroms pro Monat
 ref_waermestrom_durchschnitt = waermestrom_durchschnitt_berechnung(months_start, months_end, ref_waermestrom_stuendlich)
 
 
 # Aufrufen der Graphenerzeugung
-graph(ref_waermestrom_durchschnitt, plot_days, ref_waermestrom_stuendlich, "Referenzjahresvergleich ungedämmter Altbau", "Referenztagesvergleich ungedämmter Altbau")
+graph(waermestrom_durchschnitt, ref_waermestrom_durchschnitt,  plot_days, waermestrom_stuendlich, ref_waermestrom_stuendlich)
