@@ -36,7 +36,7 @@ temperaturverlauf_keller = get_temperaturverlauf_keller_funktion(months_start, m
 waermestromverlauf_waende = calculate(temperaturverlauf_aussen, r_lambda_haus, t_tag, t_nacht, t1, t2)
 waermestromverlauf_boden = calculate(temperaturverlauf_keller, r_lambda_boden,  t_tag, t_nacht, t1, t2)
 
-#waermestrom_gesamt = sum(waermestromverlauf_boden) + sum(waermestromverlauf_waende)                    #braucht man glaube ich für den Energieverbrauch
+waermestrom_gesamt = sum(waermestromverlauf_boden) + sum(waermestromverlauf_waende)                    #braucht man glaube ich für den Energieverbrauch
 waermestrom_stuendlich = np.array(waermestromverlauf_boden) + np.array(waermestromverlauf_waende)
 
 #Berechnen des Durchschnittlichen Waermestroms pro Monat
@@ -44,7 +44,7 @@ waermestrom_durchschnitt = waermestrom_durchschnitt_berechnung(months_start, mon
 
 
 #Wiederholung der Rechnung für ungedämmten Altbau
-ref_r_lambda_haus, ref_r_lambda_boden = waermewiderstand(5.6, 0.004, False, False, False, 0, flaeche_tuer,
+ref_r_lambda_haus, ref_r_lambda_boden = waermewiderstand(0.024, 0.004, False, False, False, 0, flaeche_tuer,
                                                  flaeche_fenster, flaeche_dachfenster, flaeche_wand_lang,
                                                  flaeche_wand_kurz, flaeche_dach, flaeche_boden)
 
@@ -56,6 +56,9 @@ ref_waermestrom_stuendlich = np.array(ref_waermestromverlauf_boden) + np.array(r
 
 ref_waermestrom_durchschnitt = waermestrom_durchschnitt_berechnung(months_start, months_end, ref_waermestrom_stuendlich)
 
+print("Der Jahresenergiebedarf beträgt" + str(waermestrom_gesamt) + "kWh.")
+print("Der Referenzjahresenergiebedarf beträgt" + str(ref_waermestrom_gesamt) + "kWh.")
 
 # Aufrufen der Graphenerzeugung
 graph(waermestrom_durchschnitt, ref_waermestrom_durchschnitt,  plot_days, waermestrom_stuendlich, ref_waermestrom_stuendlich)
+
