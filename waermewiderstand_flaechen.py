@@ -34,10 +34,10 @@ def waermewiderstand(lambda_glas, s_fenster, status_styropor_wand, status_styrop
                      flaeche_wand_kurz, flaeche_dach, flaeche_boden):
 
     # Deklaration der Konstanten
-    s_putz = 0.025
-    s_mauer = 0.115
+    s_putz = 0.04
+    s_mauer = 0.3
     lambda_putz = 0.85
-    lambda_hochlochziegeln = 0.95
+    lambda_hochlochziegeln = 0.42
     lambda_styropor = 0.035
 
     # allgemeine Funktion zur Berechnung eines einzelnen Wärmewiderstandes
@@ -70,5 +70,4 @@ def waermewiderstand(lambda_glas, s_fenster, status_styropor_wand, status_styrop
     r_lambda_haus = ((2 / r_lambda_dach) + (2 / r_lambda_k_wand) + (2 / r_lambda_l_wand)) ** (-1)
 
     return r_lambda_haus, r_lambda_boden
-
 
