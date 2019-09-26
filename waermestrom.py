@@ -4,7 +4,7 @@ import numpy as np
 def waermestromformel(temp_outside, temp_inside, r_lambda):
     if temp_outside >= temp_inside:
         return 0
-    return np.divide(temp_outside - temp_inside, r_lambda)
+    return (np.divide(temp_outside - temp_inside, r_lambda))/1000
 
 
 def calculate(list_of_temperatures_outside, r_lambda, t_tag, t_nacht, t1, t2):
@@ -21,7 +21,7 @@ def calculate(list_of_temperatures_outside, r_lambda, t_tag, t_nacht, t1, t2):
         waermestrom.append(waermestromformel(item, temp_inside, r_lambda))
     return waermestrom
 
-        waermestrom.append(waermestromformel(item, temp_inside, r_lambda))
+    waermestrom.append(waermestromformel(item, temp_inside, r_lambda))
     return waermestrom
 
 def waermestrom_durchschnitt_berechnung(months_start, months_end, waermestrom_stuendlich):
