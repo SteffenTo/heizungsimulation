@@ -89,5 +89,4 @@ def datum_wählen():
     for day in raw_days:
         plot_days.append((int(day.split(".")[0]), int(day.split(".")[1])))
 
-    return plot_days
-
+    return plot_days, raw_days
