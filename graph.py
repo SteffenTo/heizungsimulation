@@ -7,7 +7,7 @@ def graph(waermestrom_durchschnitt, ref_waermestrom_durchschnitt,  plot_days, wa
     plt.legend()
     plt.title("Jahresverlauf")
     plt.xlabel("Monat")
-    plt.ylabel("Durchschnittswärmestrom (in W(h))")
+    plt.ylabel("Durchschnittswärmestrom (in kWh)")
 
 
     plt.figure(figsize=(10, 5), num="Tagesverlauf")
@@ -21,7 +21,7 @@ def graph(waermestrom_durchschnitt, ref_waermestrom_durchschnitt,  plot_days, wa
         plt.plot(np.absolute(ref_tageswaermestrom), label="Referenz " + str(day) + "." + str(month))
 
     plt.legend()
-    plt.ylabel("Wärmestrom (in W(h))")
+    plt.ylabel("Wärmestrom (in kWh)")
     plt.xlabel("Uhrzeit (in Stunden)")
     plt.title("Tagesverlauf")
     plt.show()
