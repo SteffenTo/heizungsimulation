@@ -59,9 +59,13 @@ ref_waermestrom_stuendlich = np.array(ref_waermestromverlauf_boden) + np.array(r
 
 ref_waermestrom_durchschnitt = waermestrom_durchschnitt_berechnung(months_start, months_end, ref_waermestrom_stuendlich)
 
-print("Der Jahresenergiebedarf beträgt", str(waermestrom_gesamt), "kWh."),
-print("Der Referenzjahresenergiebedarf beträgt", str(ref_waermestrom_gesamt), "kWh.")
-print("max. Wert Liste", min(ref_waermestrom_stuendlich) )              #test: max Wärmestrom der auftritt
+print("Der Jahresenergiebedarf beträgt", str(abs(waermestrom_gesamt)), "kWh.")
+print("Der Referenzjahresenergiebedarf beträgt", str(abs(ref_waermestrom_gesamt)), "kWh.")
+print("Der maximal benötigte Wärmestrom beträgt", abs(min(ref_waermestrom_stuendlich)), "kWh.")
+if abs(min(ref_waermestrom_stuendlich)) < 23:
+    pass
+else:
+    print("Achtung, der benötigte Wärmestrom übersteigt die maximal von der Heizung bereitstellbaren Leistung.")
 
 # Aufrufen der Graphenerzeugung
 graph(waermestrom_durchschnitt, ref_waermestrom_durchschnitt,  plot_days, raw_days, waermestrom_stuendlich, ref_waermestrom_stuendlich, temperaturverlauf_aussen)
