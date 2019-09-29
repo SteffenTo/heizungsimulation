@@ -19,7 +19,7 @@ days = 0  # Kann von 0-30 gehen, 0 steht für einen Start am 1. des Monats um 0 
 status_styropor_wand, status_styropor_boden, status_styropor_dach, s_styropor, s_fenster, lambda_glas = daemmung_wahl()
 temp_min, temp_max, temp_diff, tmin = randbedingungen()
 t_tag, t_nacht, t1, t2 = soll_temperatur()
-plot_days = datum_wählen()
+plot_days, raw_days = datum_wählen()
 
 # Aufrufen der Flächenberechnung
 flaeche_tuer, flaeche_fenster, flaeche_dachfenster, flaeche_boden, flaeche_wand_kurz, flaeche_wand_lang, flaeche_dach \
@@ -61,12 +61,8 @@ ref_waermestrom_durchschnitt = waermestrom_durchschnitt_berechnung(months_start,
 
 print("Der Jahresenergiebedarf beträgt", str(waermestrom_gesamt), "kWh."),
 print("Der Referenzjahresenergiebedarf beträgt", str(ref_waermestrom_gesamt), "kWh.")
-r_lambda = ref_r_lambda_boden + ref_r_lambda_haus
-print(r_lambda)
-heizleistung = waermestromformel(-3, 21, r_lambda)
-print("Die max. Heizleistung beträgt:",str(heizleistung))               #test
-print("max. Wert Liste", min(ref_waermestrom_stuendlich) )              #test
+print("max. Wert Liste", min(ref_waermestrom_stuendlich) )              #test: max Wärmestrom der auftritt
 
 # Aufrufen der Graphenerzeugung
-graph(waermestrom_durchschnitt, ref_waermestrom_durchschnitt,  plot_days, waermestrom_stuendlich, ref_waermestrom_stuendlich)
+graph(waermestrom_durchschnitt, ref_waermestrom_durchschnitt,  plot_days, raw_days, waermestrom_stuendlich, ref_waermestrom_stuendlich, temperaturverlauf_aussen)
 
