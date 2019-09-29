@@ -3,6 +3,7 @@ from temperaturverlauf import get_temperaturverlauf_aussen
 from temperaturverlauf import get_temperaturverlauf_keller_funktion
 from waermestrom import calculate
 from waermestrom import waermestrom_durchschnitt_berechnung
+from waermestrom import waermestromformel
 from waermewiderstand_flaechen import flaechenberechnung
 from waermewiderstand_flaechen import waermewiderstand
 from auswahl_daemmung import daemmung_wahl, soll_temperatur
@@ -36,7 +37,9 @@ temperaturverlauf_keller = get_temperaturverlauf_keller_funktion(months_start, m
 waermestromverlauf_waende = calculate(temperaturverlauf_aussen, r_lambda_haus, t_tag, t_nacht, t1, t2)
 waermestromverlauf_boden = calculate(temperaturverlauf_keller, r_lambda_boden,  t_tag, t_nacht, t1, t2)
 
-waermestrom_gesamt = sum(waermestromverlauf_boden) + sum(waermestromverlauf_waende)                    #braucht man glaube ich für den Energieverbrauch
+# Berechnung Gesamtenergieverbrauch
+waermestrom_gesamt = sum(waermestromverlauf_boden) + sum(waermestromverlauf_waende)
+# Berechnung des Wärmestroms pro Stunde
 waermestrom_stuendlich = np.array(waermestromverlauf_boden) + np.array(waermestromverlauf_waende)
 
 #Berechnen des Durchschnittlichen Waermestroms pro Monat
@@ -56,8 +59,13 @@ ref_waermestrom_stuendlich = np.array(ref_waermestromverlauf_boden) + np.array(r
 
 ref_waermestrom_durchschnitt = waermestrom_durchschnitt_berechnung(months_start, months_end, ref_waermestrom_stuendlich)
 
-print("Der Jahresenergiebedarf beträgt" + str(waermestrom_gesamt) + "kWh.")
-print("Der Referenzjahresenergiebedarf beträgt" + str(ref_waermestrom_gesamt) + "kWh.")
+print("Der Jahresenergiebedarf beträgt", str(waermestrom_gesamt), "kWh."),
+print("Der Referenzjahresenergiebedarf beträgt", str(ref_waermestrom_gesamt), "kWh.")
+r_lambda = ref_r_lambda_boden + ref_r_lambda_haus
+print(r_lambda)
+heizleistung = waermestromformel(-3, 21, r_lambda)
+print("Die max. Heizleistung beträgt:",str(heizleistung))               #test
+print("max. Wert Liste", min(ref_waermestrom_stuendlich) )              #test
 
 # Aufrufen der Graphenerzeugung
 graph(waermestrom_durchschnitt, ref_waermestrom_durchschnitt,  plot_days, waermestrom_stuendlich, ref_waermestrom_stuendlich)
