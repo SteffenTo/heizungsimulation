@@ -108,6 +108,17 @@ def daemmung_wahl():
     return (status_styropor_wand, status_styropor_boden, status_styropor_dach, s_styropor, s_fenster, lambda_glas)
 
 
+def check_type():
+    korrekte_eingabe = False
+    while korrekte_eingabe == False:
+        try:
+            x = float(input("Eingabe: "))
+            korrekte_eingabe = True
+            return x
+        except ValueError:
+            print("Bitte geben Sie eine Zahl ein")
+
+
 def soll_temperatur():
     korrekte_eingabe = False
     korrekt_tag = False
@@ -129,23 +140,26 @@ def soll_temperatur():
             print("\nGeben Sie an, welche Innentemperatur tagsüber angestrebt wird."
                   "Die Wahl muss zwischen 20 und 23°C liegen.")
             while korrekt_tag == False:
-                t_tag = float(input("Eingabe: "))
+                t_tag = check_type()
                 if 20 <= t_tag <= 23:
                     korrekt_tag = True
+                else:
+                    print("Diese Temperatur ist unzulässig. Bitte tätigen Sie eine gültige Eingabe.")
 
             print("\nGeben Sie an, welche Innentemperatur nachts angestrebt wird."
                   "Die Wahl muss zwischen 16 und 19°C liegen.")
-            while korrekt_nacht == False:
-                t_nacht = float(input("Eingabe: "))
+
+            while korrekt_nacht  == False:
+                t_nacht = check_type()
                 if 16 <= t_nacht <= 19:
-                    korrekt_nacht = True
+                    korrekt_nacht  = True
                 else:
                     print("Diese Temperatur ist unzulässig. Bitte tätigen Sie eine gültige Eingabe.")
 
             print("\nGeben Sie an, ab welchem Zeitpunkt, die Tagestemperatur vorliegen soll. "
                   "Dieser muss zwischen 5 und 9 Uhr morgens liegen")
             while korrekt_t1 == False:
-                t1 = float(input("Eingabe: "))
+                t1 = check_type()
                 if 5 <= t1 <= 9:
                     korrekt_t1 = True
                 else:
@@ -154,7 +168,7 @@ def soll_temperatur():
             print("\nGeben Sie an, ab welchem Zeitpunkt, die Nachttemperatur vorliegen soll. "
                   "Dieser muss zwischen 20 und 23 Uhr abends liegen")
             while korrekt_t2 == False:
-                t2 = float(input("Eingabe: "))
+                t2 = check_type()
                 if 20 <= t2 <= 23:
                     korrekt_t2 = True
                 else:
