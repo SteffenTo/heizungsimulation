@@ -11,6 +11,12 @@ from auswahl_temperatur import randbedingungen, datum_wählen
 from graph import graph
 import numpy as np
 import matplotlib.pyplot as plt
+# muss nur eingebunden werden, da es sonst zu einem PyInstaller fehler kommt
+import numpy.random.common
+import numpy.random.bounded_integers
+import numpy.random.entropy
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning)
 
 months_start = 1
 months_end = 12
@@ -59,8 +65,12 @@ ref_waermestrom_stuendlich = np.array(ref_waermestromverlauf_boden) + np.array(r
 
 ref_waermestrom_durchschnitt = waermestrom_durchschnitt_berechnung(months_start, months_end, ref_waermestrom_stuendlich)
 
-print("Der Jahresenergiebedarf der gewählten Dämmung beträgt", round(abs(waermestrom_gesamt), 2), "kWh.")
-print("Der Referenzjahresenergiebedarf für den ungedämmten Altbau beträgt", round(abs(ref_waermestrom_gesamt), 2), "kWh.")
+energiebedarf_daemmung = round(abs(waermestrom_gesamt), 2)
+energiebedarf_referenz = round(abs(ref_waermestrom_gesamt), 2)
+energieeinsparung = energiebedarf_referenz - energiebedarf_daemmung
+print("Der Jahresenergiebedarf der gewählten Dämmung beträgt", energiebedarf_daemmung, "kWh.")
+print("Der Referenzjahresenergiebedarf für den ungedämmten Altbau beträgt", energiebedarf_referenz, "kWh.")
+print("Mit der gewählten Dämmung sparen sie", round(energieeinsparung, 2), "kWh pro Jahr.")
 print("Der maximal benötigte Wärmestrom beträgt", round(abs(min(ref_waermestrom_stuendlich)), 2), "kWh.")
 if abs(min(ref_waermestrom_stuendlich)) < 23:
     pass
