@@ -79,14 +79,14 @@ def randbedingungen():
 
 
 def datum_wählen():
-    raw_days = list()
+    daten_original = list()
 
     anzahl_tage = int(input("Wie viele Tage sollen im Tagesvergleich verglichen werden? \n"))
     for index in range(anzahl_tage):
-        raw_days.append(input("Bitte geben sie die zu vergleichenden Tage im Format 'dd.mm' ein \n"))
+        daten_original.append(input("Bitte geben sie die zu vergleichenden Tage im Format 'dd.mm' ein \n"))
 
-    plot_days = list()
-    for day in raw_days:
-        plot_days.append((int(day.split(".")[0]), int(day.split(".")[1])))
+    daten_drucken = list()
+    for day in daten_original:
+        daten_drucken.append((int(day.split(".")[0]), int(day.split(".")[1])))
 
-    return plot_days, raw_days
+    return daten_drucken, daten_original
