@@ -1,7 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-def graph(waermestrom_durchschnitt, ref_waermestrom_durchschnitt,  plot_days, raw_days, waermestrom_stuendlich, ref_waermestrom_stuendlich, temperaturverlauf_aussen):
+def graph(waermestrom_durchschnitt, ref_waermestrom_durchschnitt,  daten_drucken, daten_original, waermestrom_stuendlich,
+          ref_waermestrom_stuendlich, temperaturverlauf_aussen):
     # Jahresverbrauch
     plt.figure(figsize=(10, 5), num="Jahresverlauf")
     plt.plot(range(1,13), np.absolute(waermestrom_durchschnitt), label="Gewählte Dämmung")
@@ -15,7 +16,7 @@ def graph(waermestrom_durchschnitt, ref_waermestrom_durchschnitt,  plot_days, ra
     # Tagesverlauf
     plt.figure(figsize=(10, 5), num="Tagesverlauf")
 
-    for (day, month) in plot_days:
+    for (day, month) in daten_drucken:
         tageswaermestrom = waermestrom_stuendlich[
                            (day - 1) * 24 + (month - 1) * 24 * 30: (day * 24 + (month - 1) * 24 * 30)+1]
         plt.plot(np.absolute(tageswaermestrom), label=str(day) + "." + str(month))
@@ -31,9 +32,9 @@ def graph(waermestrom_durchschnitt, ref_waermestrom_durchschnitt,  plot_days, ra
 
     # Temperaturverlauf
     zaehler = 0
-    for i in raw_days:
+    for i in daten_original:
         plt.figure(figsize=(10, 5), num = str(i))
-        day, month = plot_days[zaehler]
+        day, month = daten_drucken[zaehler]
         zaehler += 1
         tagestemperaturverlauf = temperaturverlauf_aussen[
                                  (day - 1) * 24 + (month - 1) * 24 * 30: (day * 24 + (month - 1) * 24 * 30)+1]
