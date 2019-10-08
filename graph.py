@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def graph(waermestrom_durchschnitt, ref_waermestrom_durchschnitt,  daten_drucken, daten_original, waermestrom_stuendlich,
-          ref_waermestrom_stuendlich, temperaturverlauf_aussen):
+          ref_waermestrom_stuendlich, temperaturverlauf_aussen, temperatur_soll, temperatur_ist):
     # Jahresverbrauch
     plt.figure(figsize=(10, 5), num="Jahresverlauf")
     plt.grid()
@@ -51,12 +51,7 @@ def graph(waermestrom_durchschnitt, ref_waermestrom_durchschnitt,  daten_drucken
         tagestemperaturverlauf = temperaturverlauf_aussen[
                                  (day - 1) * 24 + (month - 1) * 24 * 30: (day * 24 + (month - 1) * 24 * 30)+1]
         plt.plot(range(0,25), tagestemperaturverlauf, label = "Außentemperatur")
+        plt.plot(range(0,25),temperatur_soll, label = "Sollinnentemperatur")
+        plt.plot(range(0,25), temperatur_ist, label = "Istinnentemperatur")
     plt.legend()
-
-
-
-
-
-
-
     plt.show()
