@@ -1,6 +1,8 @@
 import math as m
 from temperaturverlauf import get_temperaturverlauf_aussen
 from temperaturverlauf import get_temperaturverlauf_keller_funktion
+from temperaturverlauf import temperaturverlauf_soll
+from temperaturverlauf import temperaturverlauf_ist
 from waermestrom import berechnung
 from waermestrom import waermestrom_durchschnitt_berechnung
 from waermestrom import waermestromformel
@@ -38,6 +40,8 @@ r_lambda_haus, r_lambda_boden = waermewiderstand(lambda_glas, s_fenster, status_
 # Aufrufen der Temperaturverläufe
 temperaturverlauf_aussen = get_temperaturverlauf_aussen(months_start, months_end, days, temp_diff, temp_max, temp_min, tmin)
 temperaturverlauf_keller = get_temperaturverlauf_keller_funktion(months_start, months_end, days)
+temperatur_soll = temperaturverlauf_soll(t1, t2, t_tag, t_nacht)
+temperatur_ist = temperaturverlauf_ist(t1, t2, t_tag, t_nacht)
 
 # Aufrufen der Wärmestromverläufe
 waermestromverlauf_waende = berechnung(temperaturverlauf_aussen, r_lambda_haus, t_tag, t_nacht, t1, t2)
@@ -78,5 +82,6 @@ else:
     print("Achtung, der benötigte Wärmestrom übersteigt die maximal von der Heizung bereitstellbare Leistung.")
 
 # Aufrufen der Graphenerzeugung
-graph(waermestrom_durchschnitt, ref_waermestrom_durchschnitt,  daten_drucken, daten_original, waermestrom_stuendlich, ref_waermestrom_stuendlich, temperaturverlauf_aussen)
+graph(waermestrom_durchschnitt, ref_waermestrom_durchschnitt,  daten_drucken, daten_original, waermestrom_stuendlich,
+      ref_waermestrom_stuendlich, temperaturverlauf_aussen, temperatur_soll, temperatur_ist)
 
