@@ -25,7 +25,7 @@ months_end = 12
 days = 0  # Kann von 0-30 gehen, 0 steht für einen Start am 1. des Monats um 0 Uhr
 
 status_styropor_wand, status_styropor_boden, status_styropor_dach, s_styropor, s_fenster, lambda_glas = daemmung_wahl()
-temp_min, temp_max, temp_diff, tmin = randbedingungen()
+temp_min, temp_max, temp_diff, tmin = randbedingung_aussen()
 t_tag, t_nacht, t1, t2 = randbedingung_innen()
 daten_drucken, daten_original = datum_wählen()
 
