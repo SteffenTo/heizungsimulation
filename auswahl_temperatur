@@ -34,6 +34,10 @@ def randbedingungen_aussen():
             temp_max = 20
             temp_diff = 4
             tmin = 2
+            
+            print("Mindesttemperatur im Januar: ", temp_min, "°C\n Maximaltemperatur im Juli: ", temp_max, " °C\n"
+                "Tagesschwankung: ", temp_diff, " °C\n Zeitpunkt der Tagestiefsttemperatur: ", tmin, " Uhr")
+                
             korrekte_eingabe = True
 
         elif s.lower() == "n":
