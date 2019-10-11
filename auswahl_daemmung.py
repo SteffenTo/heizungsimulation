@@ -112,7 +112,7 @@ def check_type():
     korrekte_eingabe = False
     while korrekte_eingabe == False:
         try:
-            x = float(input("Eingabe: "))
+            x = int(input("Eingabe: "))
             korrekte_eingabe = True
             return x
         except ValueError:
