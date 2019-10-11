@@ -119,7 +119,7 @@ def check_type():
             print("Bitte geben Sie eine Zahl ein")
 
 
-def soll_temperatur():
+def randbedingung_innen():
     korrekte_eingabe = False
     korrekt_tag = False
     korrekt_nacht = False
@@ -138,10 +138,10 @@ def soll_temperatur():
 
         elif s.lower() == "n":
             print("\nGeben Sie an, welche Innentemperatur tagsüber angestrebt wird."
-                  "Die Wahl muss zwischen 20 und 23°C liegen.")
+                  "Die Wahl muss zwischen 19 und 23°C liegen.")
             while korrekt_tag == False:
                 t_tag = check_type()
-                if 20 <= t_tag <= 23:
+                if 19 <= t_tag <= 23:
                     korrekt_tag = True
                 else:
                     print("Diese Temperatur ist unzulässig. Bitte tätigen Sie eine gültige Eingabe.")
