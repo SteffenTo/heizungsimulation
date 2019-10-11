@@ -8,8 +8,8 @@ from waermestrom import waermestrom_durchschnitt_berechnung
 from waermestrom import waermestromformel
 from waermewiderstand_flaechen import flaechenberechnung
 from waermewiderstand_flaechen import waermewiderstand
-from auswahl_daemmung import daemmung_wahl, soll_temperatur
-from auswahl_temperatur import randbedingungen, datum_wählen
+from auswahl_daemmung import daemmung_wahl, randbedingung_innen
+from auswahl_temperatur import randbedingung_aussen, datum_wählen
 from graph import graph
 import numpy as np
 import matplotlib.pyplot as plt
@@ -26,7 +26,7 @@ days = 0  # Kann von 0-30 gehen, 0 steht für einen Start am 1. des Monats um 0 
 
 status_styropor_wand, status_styropor_boden, status_styropor_dach, s_styropor, s_fenster, lambda_glas = daemmung_wahl()
 temp_min, temp_max, temp_diff, tmin = randbedingungen()
-t_tag, t_nacht, t1, t2 = soll_temperatur()
+t_tag, t_nacht, t1, t2 = randbedingung_innen()
 daten_drucken, daten_original = datum_wählen()
 
 # Aufrufen der Flächenberechnung
