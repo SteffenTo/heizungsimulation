@@ -62,7 +62,7 @@ def randbedingungen():
                     korrekt_min = temp_gueltig(temp_min)
 
                 while korrekt_max == False:
-                    print("\nGeben Sie die maximale Temperatur für den 1. Januar ein: ")
+                    print("\nGeben Sie die maximale Temperatur für den 1. Juli ein: ")
                     temp_max = check_type()
                     korrekt_max = temp_gueltig(temp_max)
 
