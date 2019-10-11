@@ -17,7 +17,7 @@ def check_type():               #Typkontrolle und Eingabe: Programmabbruch durch
         except ValueError:
             print("Bitte geben Sie eine Zahl ein")
 
-def randbedingungen():
+def randbedingungen_aussen():
     korrekte_eingabe = False
     korrekt_diff = False
     korrekt_t = False
