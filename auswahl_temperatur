@@ -7,12 +7,15 @@ def temp_gueltig(temp):
               "Bitte wählen sie eine Temperatur zwischen -20 und 40°C")
         return False
 
-def check_type(zahl):
-    if type(float(zahl)) == float or type(int(zahl)) == int:
-        return float(zahl)
-    else:
-        print("Bitte tätigen Sie eine gültige Eingabe.")
-        return 50
+def check_type():               #Typkontrolle und Eingabe: Programmabbruch durch die Konvertierung eines Strings
+    korrekte_eingabe = False        #(bspw. "a", ".", usw) zu float verhindern
+    while korrekte_eingabe == False:
+        try:
+            x = int(input("Eingabe: "))
+            korrekte_eingabe = True
+            return x
+        except ValueError:
+            print("Bitte geben Sie eine Zahl ein")
 
 def randbedingungen():
     korrekte_eingabe = False
@@ -36,8 +39,7 @@ def randbedingungen():
         elif s.lower() == "n":
             print("\nGeben Sie die Tagesschwankung an. Diese muss zwischen 4°C und 15°C liegen")
             while korrekt_diff == False:
-                temp_diff = float(input("Eingabe: "))
-                #check_type(temp_diff)
+                temp_diff = check_type()
                 if 4 <= temp_diff <= 15:
                     korrekt_diff = True
                 else:
@@ -46,7 +48,7 @@ def randbedingungen():
             print("\nGeben sie den Zeitpunkt an, zu der die geringste Temperatur vorliegt. "
                   "Dieser muss zwischen 0 und 5 Uhr nachts liegen")
             while korrekt_t == False:
-                tmin = float(input("Eingabe: "))
+                tmin = check_type()
                 if 0 <= tmin <= 5:
                     korrekt_t = True
                 else:
@@ -56,12 +58,12 @@ def randbedingungen():
             while korrekt_temp == False:
                 while korrekt_min == False:
                     print("\nGeben Sie die geringste Temperatur für den 1. Januar ein: ")
-                    temp_min = float(input("Eingabe: "))
+                    temp_min = check_type()
                     korrekt_min = temp_gueltig(temp_min)
 
                 while korrekt_max == False:
                     print("\nGeben Sie die maximale Temperatur für den 1. Januar ein: ")
-                    temp_max = float(input("Eingabe: "))
+                    temp_max = check_type()
                     korrekt_max = temp_gueltig(temp_max)
 
                 if temp_min < temp_max:
@@ -81,7 +83,8 @@ def randbedingungen():
 def datum_wählen():
     daten_original = list()
 
-    anzahl_tage = int(input("Wie viele Tage sollen im Tagesvergleich verglichen werden? \n"))
+    print("Wie viele Tage sollen im Tagesvergleich betrachtet werden? \n")
+    anzahl_tage = check_type()
     for index in range(anzahl_tage):
         daten_original.append(input("Bitte geben sie die zu vergleichenden Tage im Format 'dd.mm' ein \n"))
 
