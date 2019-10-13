@@ -27,21 +27,26 @@ def get_temperaturverlauf_keller_funktion(months_start, months_end, days):
 
 def temperaturverlauf_soll(t1, t2, t_tag, t_nacht):
     temperatur_soll = list()
-    for i in range(0, t1):
+    for i in range(0, 4*t1):
         temperatur_soll.append(t_nacht)
-    for i in range(t1, t2):
+    for i in range(4*t1, 4*t2 + 1 ):
         temperatur_soll.append(t_tag)
-    for i in range(t2, 25):
+    for i in range(4*t2 + 1, 4*25):
         temperatur_soll.append(t_nacht)
     return temperatur_soll
 def temperaturverlauf_ist(t1, t2, t_tag, t_nacht):
     temperatur_ist = list()
-    for i in range(0, t1-1):
+    for i in range(0, 4*t1 - 3):
         temperatur_ist.append(t_nacht)
-    temperatur_ist.append((t_tag + t_nacht)/2)
-    for i in range(t1, t2):
+    temperatur_mitte = (t_tag + t_nacht)/2
+    temperatur_ist.append((t_nacht + temperatur_mitte)/2)
+    temperatur_ist.append(temperatur_mitte)
+    temperatur_ist.append((temperatur_mitte + t_tag)/2)
+    for i in range(4*t1, 4*t2 + 1):
         temperatur_ist.append(t_tag)
+    temperatur_ist.append((temperatur_mitte + t_tag)/2)
     temperatur_ist.append((t_tag + t_nacht)/2)
-    for i in range(t2+1, 25):
+    temperatur_ist.append((t_nacht + temperatur_mitte)/2)
+    for i in range(4*t2 + 3, 4*25 - 1):
         temperatur_ist.append(t_nacht)
     return temperatur_ist
