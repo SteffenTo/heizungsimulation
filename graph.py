@@ -18,10 +18,10 @@ def graph(waermestrom_durchschnitt, ref_waermestrom_durchschnitt,  daten_drucken
         zaehler += 1
         tagestemperaturverlauf = temperaturverlauf_aussen[
                                  (day - 1) * 24 + (month - 1) * 24 * 30: (day * 24 + (month - 1) * 24 * 30)+1]
-        plt.plot(range(0,25), tagestemperaturverlauf, label = "Außentemperatur")
-        plt.plot(range(0,25),temperatur_soll, label = "Sollinnentemperatur")
-        plt.plot(range(0,25), temperatur_ist, label = "Istinnentemperatur")
-    plt.legend()
+        plt.plot(range(0, 25), tagestemperaturverlauf, label = "Außentemperatur")
+        plt.plot(np.arange(0, 25, 0.25), temperatur_soll, label = "Sollinnentemperatur")
+        plt.plot(np.arange(0, 25, 0.25), temperatur_ist, label = "Istinnentemperatur")
+        plt.legend()
 
     # Tagesverlauf
     plt.figure(figsize=(10, 5), num="Tagesverlauf")
