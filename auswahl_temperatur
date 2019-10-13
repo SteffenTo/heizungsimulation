@@ -7,8 +7,9 @@ def temp_gueltig(temp):
               "Bitte wählen sie eine Temperatur zwischen -20 und 40°C")
         return False
 
-def check_type():               #Typkontrolle und Eingabe: Programmabbruch durch die Konvertierung eines Strings
-    korrekte_eingabe = False        #(bspw. "a", ".", usw) zu float verhindern
+
+def check_type():  # Typkontrolle und Eingabe: Programmabbruch durch die Konvertierung eines Strings
+    korrekte_eingabe = False  # (bspw. "a", ".", usw) zu float verhindern
     while korrekte_eingabe == False:
         try:
             x = int(input("Eingabe: "))
@@ -16,6 +17,7 @@ def check_type():               #Typkontrolle und Eingabe: Programmabbruch durch
             return x
         except ValueError:
             print("Bitte geben Sie eine Zahl ein")
+
 
 def randbedingung_aussen():
     korrekte_eingabe = False
@@ -25,7 +27,8 @@ def randbedingung_aussen():
     korrekt_min = False
     korrekt_max = False
 
-
+    print("\n\nStandardwerte für die Aussentemperatur:\n   Mindesttemperatur im Januar: 1°C\n   "
+          "Maximaltemperatur im Juli: 20°C\n   Tagesschwankung: 4°C\n   Zeitpunkt der Tagestiefsttemperatur: 2Uhr")
     while korrekte_eingabe == False:
         print("\nMöchten Sie Standardwerte für den Temperaturverlauf verwenden? 'j' = ja oder 'n' = nein ?")
         s = input("Eingabe: ")
@@ -34,10 +37,7 @@ def randbedingung_aussen():
             temp_max = 20
             temp_diff = 4
             tmin = 2
-            
-            print("Mindesttemperatur im Januar: ", temp_min, "°C\n Maximaltemperatur im Juli: ", temp_max, " °C\n"
-                "Tagesschwankung: ", temp_diff, " °C\n Zeitpunkt der Tagestiefsttemperatur: ", tmin, " Uhr")
-                
+
             korrekte_eingabe = True
 
         elif s.lower() == "n":
@@ -82,12 +82,10 @@ def randbedingung_aussen():
     return temp_min, temp_max, temp_diff, tmin
 
 
-
-
 def datum_wählen():
     daten_original = list()
 
-    print("Wie viele Tage sollen im Tagesvergleich betrachtet werden? \n")
+    print("\n\nWie viele Tage sollen im Tagesvergleich betrachtet werden? \n")
     anzahl_tage = check_type()
     for index in range(anzahl_tage):
         daten_original.append(input("Bitte geben sie die zu vergleichenden Tage im Format 'dd.mm' ein \n"))
