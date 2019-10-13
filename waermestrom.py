@@ -11,7 +11,7 @@ def berechnung(liste_aussentemperaturen, r_lambda, temperatur_ist):
 
     for index, item in enumerate(liste_aussentemperaturen):
         hour = index % 24
-        waermestrom.append(waermestromformel(item, temperatur_ist[hour], r_lambda))
+        waermestrom.append(waermestromformel(item, temperatur_ist[4*hour], r_lambda))
     return waermestrom
 
 def waermestrom_durchschnitt_berechnung(months_start, months_end, waermestrom_stuendlich):
