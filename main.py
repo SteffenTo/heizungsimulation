@@ -72,14 +72,14 @@ ref_waermestrom_durchschnitt = waermestrom_durchschnitt_berechnung(months_start,
 energiebedarf_daemmung = round(abs(waermestrom_gesamt), 2)
 energiebedarf_referenz = round(abs(ref_waermestrom_gesamt), 2)
 energieeinsparung = energiebedarf_referenz - energiebedarf_daemmung
-print("Der Jahresenergiebedarf der gewählten Dämmung beträgt", energiebedarf_daemmung, "kWh.")
+print("\n\nDer Jahresenergiebedarf der gewählten Dämmung beträgt", energiebedarf_daemmung, "kWh.")
 print("Der Referenzjahresenergiebedarf für den ungedämmten Altbau beträgt", energiebedarf_referenz, "kWh.")
 print("Mit der gewählten Dämmung sparen sie", round(energieeinsparung, 2), "kWh pro Jahr.")
 print("Der maximal benötigte Wärmestrom beträgt", round(abs(min(ref_waermestrom_stuendlich)), 2), "kWh.")
 if abs(min(ref_waermestrom_stuendlich)) < 23:
     pass
 else:
-    print("Achtung, der benötigte Wärmestrom übersteigt die maximal von der Heizung bereitstellbare Leistung.")
+    print("\nACHTUNG, der benötigte Wärmestrom übersteigt die maximal von der Heizung bereitstellbare Leistung.")
 
 # Aufrufen der Graphenerzeugung
 graph(waermestrom_durchschnitt, ref_waermestrom_durchschnitt,  daten_drucken, daten_original, waermestrom_stuendlich,
