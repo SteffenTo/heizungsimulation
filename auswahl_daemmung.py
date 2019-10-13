@@ -4,19 +4,18 @@ print("Ein Haus mit bekannten Abmaßen soll gedämmt werden.\n"
       "Sie können entweder die Wände,das Dach oder die Kellerdecke mit 6cm, 10cm oder 15cm dicken Styropor dämmen\n"
       "oder bei den Fenstern und Türen die Einfachverglasung durch eine Doppel- oder Dreifachverglasung ersetzen.\n"
       "Es ist ebenso möglich, das gesamte Gebäude mit 15cm Styropor und Dreifachverglasung zu dämmen\n"
-      "oder den ungedämmten Altbau zu betrachten")
-
+      "oder den ungedämmten Altbau zu betrachten\n\nSÄMTLICHE EINGABEN ERFOLGEN OHNE ANGABE DER EINHEIT!" )
 
 # 2. Verschleifung: Auswahl der möglichen Styropordicken, möglich für Wände/Dach/Boden
 def s_styropor_wahl():
-    if maßnahme == "a":
+    if maßnahme.lower() == "a":
         s_styropor = 0.06
         return (True, True, s_styropor)  # return (allgemeinen Status, korrekte Eingabe, Styropordicke)
 
-    elif maßnahme == "b":
+    elif maßnahme.lower() == "b":
         s_styropor = 0.1
         return (True, True, s_styropor)
-    elif maßnahme == "c":
+    elif maßnahme.lower() == "c":
         s_styropor = 0.15
         return (True, True, s_styropor)
     else:  # für den Fall einer ungültigen Eingabe
@@ -27,12 +26,12 @@ def s_styropor_wahl():
 
 # 2. Verschleifung: Auswahl der möglichen Verglasung, möglich für Fenster und Türen (immer zusammen)
 def glas_wahl():
-    if maßnahme == "a":
+    if maßnahme.lower() == "a":
         s_fenster = 0.026
         lambda_glas = 0.012
         return (s_fenster, lambda_glas, True)  # return (Glasdicke, Wärmeleitfähigkeit, korrekte Eingabe)
 
-    elif maßnahme == "b":
+    elif maßnahme.lower() == "b":
         s_fenster = 0.044
         lambda_glas = 0.004
         return (s_fenster, lambda_glas, True)
@@ -58,7 +57,7 @@ def daemmung_wahl():
     while korrekte_eingabe == False:  # solange diese Bedingung erfüllt ist, ist die Auswahl der Dämmung nicht
         # abgeschlossen
         # Legende: Gebäudekomponente
-        print("Welche Gebäudekomponente soll gedämmt werden?\n 1 - Wände\n 2 - Dach\n 3 - Kellerboden\n "
+        print("\n\nWelche Gebäudekomponente soll gedämmt werden?\n 1 - Wände\n 2 - Dach\n 3 - Kellerboden\n "
               "4 - Fenster und Türen\n 5 - alles\n 6 - Betrachtung des ungedämmten Altbaus\n "
               "Bestätigen Sie alle Eingaben mithilfe der Enter-Taste")
 
@@ -125,6 +124,10 @@ def randbedingung_innen():
     korrekt_nacht = False
     korrekt_t1 = False
     korrekt_t2 = False
+
+    print("\n\nStandardwerte für die Raumtemperatur:\n   Tagestemperatur: 21°C\n   Nachttemperatur: 18°C\n   "
+          "Zeitpunkt, ab dem die Tagestiefsttemperatur vorliegen soll: 7 Uhr\n   "
+          "Zeitpunkt, ab dem die Nachttemperatur vorliegen soll: 22 Uhr")
 
     while korrekte_eingabe == False:
         print("\nMöchten Sie Standardwerte für den Raumtemperaturverlauf verwenden? 'j' = ja oder 'n' = nein ?")
