@@ -44,8 +44,8 @@ temperatur_soll = temperaturverlauf_soll(t1, t2, t_tag, t_nacht)
 temperatur_ist = temperaturverlauf_ist(t1, t2, t_tag, t_nacht)
 
 # Aufrufen der Wärmestromverläufe
-waermestromverlauf_waende = berechnung(temperaturverlauf_aussen, r_lambda_haus, t_tag, t_nacht, t1, t2)
-waermestromverlauf_boden = berechnung(temperaturverlauf_keller, r_lambda_boden,  t_tag, t_nacht, t1, t2)
+waermestromverlauf_waende = berechnung(temperaturverlauf_aussen, r_lambda_haus, temperatur_ist)
+waermestromverlauf_boden = berechnung(temperaturverlauf_keller, r_lambda_boden, temperatur_ist)
 
 # Berechnung Gesamtenergieverbrauch
 waermestrom_gesamt = sum(waermestromverlauf_boden) + sum(waermestromverlauf_waende)
@@ -61,8 +61,8 @@ ref_r_lambda_haus, ref_r_lambda_boden = waermewiderstand(0.024, 0.004, False, Fa
                                                  flaeche_fenster, flaeche_dachfenster, flaeche_wand_lang,
                                                  flaeche_wand_kurz, flaeche_dach, flaeche_boden)
 
-ref_waermestromverlauf_waende = berechnung(temperaturverlauf_aussen, ref_r_lambda_haus, t_tag, t_nacht, t1, t2)
-ref_waermestromverlauf_boden = berechnung(temperaturverlauf_keller, ref_r_lambda_boden, t_tag, t_nacht, t1, t2)
+ref_waermestromverlauf_waende = berechnung(temperaturverlauf_aussen, ref_r_lambda_haus, temperatur_ist)
+ref_waermestromverlauf_boden = berechnung(temperaturverlauf_keller, ref_r_lambda_boden, temperatur_ist)
 
 ref_waermestrom_gesamt = sum(ref_waermestromverlauf_boden) + sum(ref_waermestromverlauf_waende)
 ref_waermestrom_stuendlich = np.array(ref_waermestromverlauf_boden) + np.array(ref_waermestromverlauf_waende)
