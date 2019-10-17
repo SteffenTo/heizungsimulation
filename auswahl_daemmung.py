@@ -4,7 +4,7 @@ print("Ein Haus mit bekannten Abmaßen soll gedämmt werden.\n"
       "Sie können entweder die Wände,das Dach oder die Kellerdecke mit 6cm, 10cm oder 15cm dicken Styropor dämmen\n"
       "oder bei den Fenstern und Türen die Einfachverglasung durch eine Doppel- oder Dreifachverglasung ersetzen.\n"
       "Es ist ebenso möglich, das gesamte Gebäude mit 15cm Styropor und Dreifachverglasung zu dämmen\n"
-      "oder den ungedämmten Altbau zu betrachten\n\nSÄMTLICHE EINGABEN ERFOLGEN OHNE ANGABE DER EINHEIT!" )
+      "oder den ungedämmten Altbau zu betrachten.\n\nSÄMTLICHE EINGABEN ERFOLGEN OHNE ANGABE DER EINHEIT!" )
 
 # 2. Verschleifung: Auswahl der möglichen Styropordicken, möglich für Wände/Dach/Boden
 def s_styropor_wahl():
