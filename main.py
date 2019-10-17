@@ -1,24 +1,23 @@
-import math as m
-from temperaturverlauf import get_temperaturverlauf_aussen
-from temperaturverlauf import get_temperaturverlauf_keller_funktion
-from temperaturverlauf import temperaturverlauf_soll
-from temperaturverlauf import temperaturverlauf_ist
-from waermestrom import berechnung
-from waermestrom import waermestrom_durchschnitt_berechnung
-from waermestrom import waermestromformel
-from waermewiderstand_flaechen import flaechenberechnung
-from waermewiderstand_flaechen import waermewiderstand
-from auswahl_daemmung import daemmung_wahl, randbedingung_innen
-from auswahl_temperatur import randbedingung_aussen, datum_wählen
-from graph import graph
-import numpy as np
-import matplotlib.pyplot as plt
-# muss nur eingebunden werden, da es sonst zu einem PyInstaller fehler kommt
+# folgende Befehle müssen nur eingebunden werden, da es sonst zu einem PyInstaller Fehler kommt
 import numpy.random.common
 import numpy.random.bounded_integers
 import numpy.random.entropy
 import warnings
-warnings.filterwarnings("ignore", category=UserWarning)
+warnings.filterwarnings(action="always", category=UserWarning)
+# Aufrufe, die für das eigentliche Programm nötig sind
+import math as m
+from temperaturverlauf import get_temperaturverlauf_aussen, get_temperaturverlauf_keller_funktion
+from temperaturverlauf import temperaturverlauf_soll, temperaturverlauf_ist
+from waermestrom import berechnung, waermestrom_durchschnitt_berechnung, waermestromformel
+from waermewiderstand_flaechen import flaechenberechnung, waermewiderstand
+from auswahl_daemmung import daemmung_wahl, randbedingung_innen
+from auswahl_temperatur import randbedingung_aussen, datum_wählen
+from graph import graph
+import numpy as np
+with warnings.catch_warnings():
+    warnings.simplefilter("ignore")
+    import matplotlib.pyplot as plt
+
 
 months_start = 1
 months_end = 12
