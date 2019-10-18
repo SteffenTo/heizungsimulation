@@ -85,13 +85,24 @@ def randbedingung_aussen():
 def datum_wählen():
     daten_original = list()
 
-    print("\n\nWie viele Tage sollen im Tagesvergleich betrachtet werden? \n")
+    print("Wie viele Tage sollen im Tagesvergleich betrachtet werden?")
     anzahl_tage = check_type()
-    for index in range(anzahl_tage):
-        daten_original.append(input("Bitte geben sie die zu vergleichenden Tage im Format 'dd.mm' ein \n"))
+    korrekte_eingabe = False
+    while korrekte_eingabe == False:
+        for index in range(anzahl_tage):
+            inp = input("Bitte geben sie die zu vergleichenden Tage im Format 'dd.mm' ein \n")
+            daten_original.append(inp)
 
-    daten_drucken = list()
-    for day in daten_original:
-        daten_drucken.append((int(day.split(".")[0]), int(day.split(".")[1])))
+        daten_drucken = list()
+        try:
+            for day in daten_original:
+                if int(day.split(".")[0]) > 30 or int(day.split(".")[1]) > 12:
+                    raise ValueError("Format Fehler")
+                daten_drucken.append((int(day.split(".")[0]), int(day.split(".")[1])))
+            korrekte_eingabe = True
+        except (ValueError, IndexError) as e:
+            print("Fehler in Eingaben (", e.args[0], ")! Erneute Eingabe mit", anzahl_tage, "Tag(en):")
+            daten_original = list()
+
 
     return daten_drucken, daten_original
