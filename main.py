@@ -2,10 +2,10 @@
 import numpy.random.common
 import numpy.random.bounded_integers
 import numpy.random.entropy
-import warnings
-warnings.filterwarnings(action="always", category=UserWarning)
 # Aufrufe, die für das eigentliche Programm nötig sind
 import math as m
+import numpy as np
+import matplotlib.pyplot as plt
 from temperaturverlauf import get_temperaturverlauf_aussen, get_temperaturverlauf_keller_funktion
 from temperaturverlauf import temperaturverlauf_soll, temperaturverlauf_ist
 from waermestrom import berechnung, waermestrom_durchschnitt_berechnung, waermestromformel
@@ -13,10 +13,6 @@ from waermewiderstand_flaechen import flaechenberechnung, waermewiderstand
 from auswahl_daemmung import daemmung_wahl, randbedingung_innen
 from auswahl_temperatur import randbedingung_aussen, datum_wählen
 from graph import graph
-import numpy as np
-with warnings.catch_warnings():
-    warnings.simplefilter("ignore")
-    import matplotlib.pyplot as plt
 
 
 months_start = 1
@@ -68,17 +64,20 @@ ref_waermestrom_stuendlich = np.array(ref_waermestromverlauf_boden) + np.array(r
 
 ref_waermestrom_durchschnitt = waermestrom_durchschnitt_berechnung(months_start, months_end, ref_waermestrom_stuendlich)
 
+# Benutzerausgabe
 energiebedarf_daemmung = round(abs(waermestrom_gesamt), 2)
 energiebedarf_referenz = round(abs(ref_waermestrom_gesamt), 2)
 energieeinsparung = energiebedarf_referenz - energiebedarf_daemmung
 print("\n\nDer Jahresenergiebedarf der gewählten Dämmung beträgt", energiebedarf_daemmung, "kWh.")
 print("Der Referenzjahresenergiebedarf für den ungedämmten Altbau beträgt", energiebedarf_referenz, "kWh.")
-print("Mit der gewählten Dämmung sparen sie", round(energieeinsparung, 2), "kWh pro Jahr.")
-print("Der maximal benötigte Wärmestrom beträgt", round(abs(min(ref_waermestrom_stuendlich)), 2), "kWh.")
+print("Mit der gewählten Dämmung sparen sie", round(energieeinsparung, 2), "kWh pro Jahr. Das entspricht", round(100 -
+      (energiebedarf_daemmung/energiebedarf_referenz)*100, 2), "%.")
 if abs(min(ref_waermestrom_stuendlich)) < 23:
-    pass
+    print("Die Heizung ist für die gewählten Werte ausreichend dimensioniert.")
 else:
-    print("\nACHTUNG, der benötigte Wärmestrom übersteigt die maximal von der Heizung bereitstellbare Leistung.")
+    print("\nACHTUNG, der maximal benötigte Wärmestrom von", round(abs(min(ref_waermestrom_stuendlich)), 2),
+          "kW übersteigt die maximal von der Heizung bereitstellbare Leistung von 23 kW.")
+print("\n© Natalia Mrozek, Luca Podrasa, Simon Beckmann, Steffen Tomasik")
 
 # Aufrufen der Graphenerzeugung
 graph(waermestrom_durchschnitt, ref_waermestrom_durchschnitt,  daten_drucken, daten_original, waermestrom_stuendlich,
