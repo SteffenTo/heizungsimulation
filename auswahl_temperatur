@@ -4,7 +4,7 @@ def temp_gueltig(temp):
         return True
     else:
         print("Die Temperatur liegt nicht im Geltungsbereich. \n"
-              "Bitte wählen sie eine Temperatur zwischen -20 und 40°C")
+              "Bitte wählen sie eine Temperatur zwischen -20 und 40°C.")
         return False
 
 
@@ -16,7 +16,7 @@ def check_type():  # Typkontrolle und Eingabe: Programmabbruch durch die Konvert
             korrekte_eingabe = True
             return x
         except ValueError:
-            print("Bitte geben Sie eine Zahl ein")
+            print("Bitte geben Sie eine Zahl ein.")
 
 
 def randbedingung_aussen():
@@ -27,10 +27,10 @@ def randbedingung_aussen():
     korrekt_min = False
     korrekt_max = False
 
-    print("\n\nStandardwerte für die Aussentemperatur:\n   Mindesttemperatur im Januar: 1°C\n   "
-          "Maximaltemperatur im Juli: 20°C\n   Tagesschwankung: 4°C\n   Zeitpunkt der Tagestiefsttemperatur: 2Uhr")
+    print("\n\nStandardwerte für die Aussentemperatur:\n   Mindesttemperatur im Januar: 1 °C\n   "
+          "Maximaltemperatur im Juli: 20 °C\n   Tagesschwankung: 4 °C\n   Zeitpunkt der Tagestiefsttemperatur: 2 Uhr")
     while korrekte_eingabe == False:
-        print("\nMöchten Sie Standardwerte für den Temperaturverlauf verwenden? 'j' = ja oder 'n' = nein ?")
+        print("\nMöchten Sie Standardwerte für den Temperaturverlauf verwenden? 'j' = ja oder 'n' = nein?")
         s = input("Eingabe: ")
         if s.lower() == "j":
             temp_min = 1
@@ -41,7 +41,7 @@ def randbedingung_aussen():
             korrekte_eingabe = True
 
         elif s.lower() == "n":
-            print("\nGeben Sie die Tagesschwankung an. Diese muss zwischen 4°C und 15°C liegen")
+            print("\nGeben Sie die Tagesschwankung an. Diese muss zwischen 4 °C und 15 °C liegen.")
             while korrekt_diff == False:
                 temp_diff = check_type()
                 if 4 <= temp_diff <= 15:
@@ -50,7 +50,7 @@ def randbedingung_aussen():
                     print("Die Tagesschwankung liegt in einem unrealistischen Bereich.")
 
             print("\nGeben sie den Zeitpunkt an, zu der die geringste Temperatur vorliegt. "
-                  "Dieser muss zwischen 0 und 5 Uhr nachts liegen")
+                  "Dieser muss zwischen 0 und 5 Uhr nachts liegen.")
             while korrekt_t == False:
                 tmin = check_type()
                 if 0 <= tmin <= 5:
@@ -58,7 +58,7 @@ def randbedingung_aussen():
                 else:
                     print("Dieser Zeitpunkt ist unzulässig. Bitte tätigen Sie eine gültige Eingabe.")
 
-            print("\nBitte wählen sie eine Temperatur zwischen -20 und 40°C")
+            print("\nBitte wählen sie eine Temperatur zwischen -20 und 40°C.")
             while korrekt_temp == False:
                 while korrekt_min == False:
                     print("\nGeben Sie die geringste Temperatur für den 1. Januar ein: ")
@@ -90,7 +90,7 @@ def datum_wählen():
     korrekte_eingabe = False
     while korrekte_eingabe == False:
         for index in range(anzahl_tage):
-            inp = input("Bitte geben sie die zu vergleichenden Tage im Format 'dd.mm' ein \n")
+            inp = input("Bitte geben Sie die zu vergleichenden Tage im Format 'dd.mm' ein. \n")
             daten_original.append(inp)
 
         daten_drucken = list()
