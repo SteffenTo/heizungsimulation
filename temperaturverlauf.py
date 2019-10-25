@@ -2,7 +2,7 @@ import math as m
 
 
 def temperaturverlauf_aussen(hours, temp_diff, temp_max, temp_min, tmin):
-    return round((1 / 2 * temp_diff * m.sin(m.pi * 1 / 12 * (hours - 6 - tmin)) + ((temp_max - temp_min) / 2) * m.sin(
+    return round((temp_diff * m.sin(m.pi * 1 / 12 * (hours - 6 - tmin)) + ((temp_max - temp_min) / 2) * m.sin(
         m.pi * 1 / 4320 * (hours - 2160)) + (((temp_max - temp_min) / 2) + temp_min)), 2)
 
 
