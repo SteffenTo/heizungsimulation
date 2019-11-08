@@ -2,7 +2,7 @@ print("Energieverbrauchsrechner \n"
       "\nEin Haus mit bekannten Abmaßen soll gedämmt werden.\n"
       "Für die Bewertung der Maßnahmen steht Ihnen eine Software zur Verfügung, welche den notwendigen Energiebedarf\n"
       "in Kombination mit verschiedenen Dämmmaßnahmen errechnet.\n"
-      "Sie können entweder die Wände, das Dach oder die Kellerdecke mit 6cm, 10cm oder 15cm dicken Styropor dämmen\n"
+      "Sie können entweder die Wände, das Dach oder die Kellerdecke mit 6cm, 10cm oder 15cm dickem Styropor dämmen\n"
       "oder bei den Fenstern und Türen die Einfachverglasung durch eine Doppel- oder Dreifachverglasung ersetzen.\n"
       "Es ist ebenso möglich, das gesamte Gebäude mit 15cm Styropor und Dreifachverglasung zu dämmen\n"
       "oder den ungedämmten Altbau zu betrachten.\n\nSÄMTLICHE EINGABEN ERFOLGEN OHNE ANGABE DER EINHEIT!" )
