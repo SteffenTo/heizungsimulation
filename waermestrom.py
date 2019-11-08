@@ -1,6 +1,5 @@
 import numpy as np
 
-
 def waermestromformel(temp_aussen, temp_innen, r_lambda):
     if temp_aussen >= temp_innen:
         return 0
