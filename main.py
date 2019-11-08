@@ -14,11 +14,12 @@ from auswahl_daemmung import daemmung_wahl, randbedingung_innen
 from auswahl_temperatur import randbedingung_aussen, datum_wählen
 from graph import graph
 
-
+# Variablendeklaration
 months_start = 1
 months_end = 12
 days = 0  # Kann von 0-30 gehen, 0 steht für einen Start am 1. des Monats um 0 Uhr
 
+# Aufrufen der Daten aus der Benutzereingabe
 status_styropor_wand, status_styropor_boden, status_styropor_dach, s_styropor, s_fenster, lambda_glas = daemmung_wahl()
 temp_min, temp_max, temp_diff, tmin = randbedingung_aussen()
 t_tag, t_nacht, t1, t2 = randbedingung_innen()
@@ -47,11 +48,11 @@ waermestrom_gesamt = sum(waermestromverlauf_boden) + sum(waermestromverlauf_waen
 # Berechnung des Wärmestroms pro Stunde
 waermestrom_stuendlich = np.array(waermestromverlauf_boden) + np.array(waermestromverlauf_waende)
 
-#Berechnen des Durchschnittlichen Waermestroms pro Monat
+# Berechnen des Durchschnittlichen Waermestroms pro Monat
 waermestrom_durchschnitt = waermestrom_durchschnitt_berechnung(months_start, months_end, waermestrom_stuendlich)
 
 
-#Wiederholung der Rechnung für ungedämmten Altbau
+# Wiederholung der Rechnung für den ungedämmten Altbau
 ref_r_lambda_haus, ref_r_lambda_boden = waermewiderstand(0.024, 0.004, False, False, False, 0, flaeche_tuer,
                                                  flaeche_fenster, flaeche_dachfenster, flaeche_wand_lang,
                                                  flaeche_wand_kurz, flaeche_dach, flaeche_boden)
