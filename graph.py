@@ -23,7 +23,7 @@ def graph(waermestrom_durchschnitt, ref_waermestrom_durchschnitt,  daten_drucken
         plt.plot(np.arange(0, 25, 0.25), temperatur_ist, label = "Istinnentemperatur")
         plt.legend()
 
-    # Tagesverlauf
+    # Tagesverbrauch
     plt.figure(figsize=(11, 6), num="Tagesverlauf")
     plt.grid()
     plt.xticks(np.arange(0, 25, 1.0))
