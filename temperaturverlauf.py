@@ -1,6 +1,6 @@
 import math as m
 
-#Temperaturverlaufkurve Aussentemperatur
+#Temperaturverlaufskurve Aussentemperatur
 def temperaturverlauf_aussen(hours, temp_diff, temp_max, temp_min, tmin):
     return round((temp_diff * m.sin(m.pi * 1 / 12 * (hours - 6 - tmin)) + ((temp_max - temp_min) / 2) * m.sin(
         m.pi * 1 / 4320 * (hours - 2160)) + (((temp_max - temp_min) / 2) + temp_min)), 2)
@@ -12,7 +12,7 @@ def get_temperaturverlauf_aussen(months_start, months_end, days, temp_diff, temp
 
     return temperaturverlauf_haus
 
-#Temperaturverlaufkurve Keller
+#Temperaturverlaufskurve Keller
 def temperaturverlauf_keller_funktion(hours):
     return round((5 / 2 * m.sin(m.pi * 1 / 4320 * (hours - 2160)) + 25 / 2), 2)
 
