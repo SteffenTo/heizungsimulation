@@ -54,7 +54,7 @@ def waermewiderstand(lambda_glas, s_fenster, status_styropor_wand, status_styrop
         else:
             r_lambda_pzs += r_lambda(s_styropor, lambda_styropor, flaeche)
         return r_lambda_pzs
-
+    # Berechnung der einzelnen Wärmewiderstände
     r_lambda_dach = ((1 / r_lambda_pzs(status_styropor_dach, s_styropor, flaeche_dach)) + (
             1 / r_lambda(s_fenster, lambda_glas, flaeche_dachfenster))) ** (-1)
 
