@@ -10,8 +10,8 @@ from temperaturverlauf import get_temperaturverlauf_aussen, get_temperaturverlau
 from temperaturverlauf import temperaturverlauf_soll, temperaturverlauf_ist
 from waermestrom import berechnung, waermestrom_durchschnitt_berechnung, waermestromformel
 from waermewiderstand_flaechen import flaechenberechnung, waermewiderstand
-from auswahl_daemmung import daemmung_wahl, randbedingung_innen
-from auswahl_temperatur import randbedingung_aussen, datum_wählen
+from auswahl_daemmung import daemmung_wahl
+from auswahl_temperatur import randbedingung_aussen, randbedingung_innen, datum_wählen
 from graph import graph
 
 # Variablendeklaration
