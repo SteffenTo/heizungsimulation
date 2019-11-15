@@ -27,6 +27,7 @@ def randbedingung_aussen():
     korrekt_min = False
     korrekt_max = False
 
+#Abfrage, ob Standardwerte benutzt werden sollen
     print("\n\nStandardwerte für die Aussentemperatur:\n   Mindesttemperatur im Januar: 1 °C\n   "
           "Maximaltemperatur im Juli: 20 °C\n   Tagesschwankung: 4 °C\n   Zeitpunkt der Tagestiefsttemperatur: 2 Uhr")
     while korrekte_eingabe == False:
@@ -39,7 +40,8 @@ def randbedingung_aussen():
             tmin = 2
 
             korrekte_eingabe = True
-
+            
+#Eingabe Tagesschwankung mit Überprüfung 
         elif s.lower() == "n":
             print("\nGeben Sie die Tagesschwankung an. Diese muss zwischen 4 °C und 15 °C liegen.")
             while korrekt_diff == False:
@@ -49,6 +51,7 @@ def randbedingung_aussen():
                 else:
                     print("Die Tagesschwankung liegt in einem unrealistischen Bereich.")
 
+#Eingabe der Variable tmin mit Überprüfung
             print("\nGeben sie den Zeitpunkt an, zu der die geringste Temperatur vorliegt. "
                   "Dieser muss zwischen 0 und 5 Uhr nachts liegen.")
             while korrekt_t == False:
@@ -57,7 +60,8 @@ def randbedingung_aussen():
                     korrekt_t = True
                 else:
                     print("Dieser Zeitpunkt ist unzulässig. Bitte tätigen Sie eine gültige Eingabe.")
-
+                    
+#Eingabe der Temperatur für den 1. Januar mit Überprüfung
             print("\nBitte wählen sie eine Temperatur zwischen -20 und 40°C.")
             while korrekt_temp == False:
                 while korrekt_min == False:
@@ -65,6 +69,8 @@ def randbedingung_aussen():
                     temp_min = check_type()
                     korrekt_min = temp_gueltig(temp_min)
 
+#Eingabe der Temperatur für den 1. Juli mit Überprüfung
+#Überprüfung Kompatibilität der zuletzt genannten Werte
                 while korrekt_max == False:
                     print("\nGeben Sie die maximale Temperatur für den 1. Juli ein: ")
                     temp_max = check_type()
