@@ -70,12 +70,12 @@ def randbedingung_aussen():
                     korrekt_min = temp_gueltig(temp_min)
 
 #Eingabe der Temperatur für den 1. Juli mit Überprüfung
-#Überprüfung Kompatibilität der zuletzt genannten Werte
                 while korrekt_max == False:
                     print("\nGeben Sie die maximale Temperatur für den 1. Juli ein: ")
                     temp_max = check_type()
                     korrekt_max = temp_gueltig(temp_max)
 
+#Überprüfung Kompatibilität der zuletzt genannten Werte
                 if temp_min < temp_max:
                     korrekt_temp = True
                 else:
