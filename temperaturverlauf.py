@@ -34,6 +34,8 @@ def temperaturverlauf_soll(t1, t2, t_tag, t_nacht):
     for i in range(4*t2 + 1, 4*25):
         temperatur_soll.append(t_nacht)
     return temperatur_soll
+
+#Temperaturverlaufskurve Istinnentemperatur
 def temperaturverlauf_ist(t1, t2, t_tag, t_nacht):
     temperatur_ist = list()
     for i in range(0, 4*t1 - 3):
