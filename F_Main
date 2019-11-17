@@ -1,9 +1,5 @@
-# folgende Befehle müssen nur eingebunden werden, da es sonst zu einem PyInstaller Fehler kommt
-import numpy as np
-import np.random.common
-import np.random.bounded_integers
-import np.random.entropy
 # Aufrufe, die für das eigentliche Programm nötig sind
+import numpy as np
 import math as m
 import matplotlib.pyplot as plt
 from temperaturverlauf import get_temperaturverlauf_aussen, \
@@ -111,3 +107,5 @@ graph(waermestrom_durchschnitt, ref_waermestrom_durchschnitt,
         daten_drucken, daten_original, waermestrom_stuendlich,
         ref_waermestrom_stuendlich, temperaturverlauf_aussen,
         temperatur_soll, temperatur_ist)
+
+input("ENTER drücken um das Programm zu schließen.")
