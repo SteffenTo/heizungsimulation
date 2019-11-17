@@ -1,10 +1,10 @@
 # folgende Befehle müssen nur eingebunden werden, da es sonst zu einem PyInstaller Fehler kommt
-import numpy.random.common
-import numpy.random.bounded_integers
-import numpy.random.entropy
+import numpy as np
+import np.random.common
+import np.random.bounded_integers
+import np.random.entropy
 # Aufrufe, die für das eigentliche Programm nötig sind
 import math as m
-import numpy as np
 import matplotlib.pyplot as plt
 from temperaturverlauf import get_temperaturverlauf_aussen, \
         get_temperaturverlauf_keller_funktion
